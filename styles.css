@@ -1,4 +1,4 @@
-/* --- Estilos Generales y compartidos --- */
+/* --- Estilos Generales para las páginas de información --- */
 body {
     display: flex;
     flex-direction: column;
@@ -10,87 +10,71 @@ body {
     line-height: 1.6;
 }
 
-/* --- ESTILOS PARA LA PÁGINA DE INICIO FIJA Y SIN SCROLL --- */
-body.no-scroll {
-    height: 100vh;
-    overflow: hidden;
-}
-/* --------------------------------------------------------- */
-
-
 main {
     flex-grow: 1; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* --- Estilos para la Página de Inicio (index.html) --- */
-.slogan-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     padding: 2rem;
-    box-sizing: border-box;
 }
 
-.slogan-container h1 {
-    font-size: clamp(3rem, 10vw, 6rem);
-    font-weight: 700;
-    margin: 0;
+/* --- Estilos para la PÁGINA DE MENÚ (moreinfo.html) --- */
+.menu-container {
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.menu-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
     background: linear-gradient(135deg, #A8C7FA, #C6A7FC);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.slogan-container p {
-    font-size: clamp(1.2rem, 4vw, 2rem);
-    font-weight: 300;
-    margin: 0.5rem 0 0;
+.menu-subtitle {
+    color: #B0B0B0;
+    margin-bottom: 3rem;
+    font-size: 1.2rem;
+}
+
+.menu-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    margin: 0 auto 3rem auto;
+}
+
+.menu-button {
+    background-color: #2a2a2a;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: #E0E0E0;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.menu-button:hover {
+    transform: translateY(-5px);
+    border-color: #A8C7FA;
+}
+
+.menu-button h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+}
+
+.menu-button p {
+    margin: 0;
     color: #B0B0B0;
 }
 
-.info-button {
-    margin-top: 2.5rem;
-    padding: 12px 24px;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #E0E0E0;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    /* Propiedades añadidas para la animación de brillo */
-    position: relative;
-    overflow: hidden;
-}
-
-.info-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.15), transparent);
-    transform: skewX(-25deg);
-    animation: shimmer 5s infinite linear;
-    animation-delay: 2s; /* El brillo aparece tras 2 segundos */
-}
-
-.info-button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-3px);
-}
-
-/* --- Estilos para la Página de Información (moreinfo.html) --- */
+/* --- Estilos para las PÁGINAS DE DOCUMENTACIÓN --- */
 .content-wrapper {
     max-width: 800px;
     margin: 0 auto;
-    padding: 3rem 2rem;
+    padding-top: 1rem; /* Reducido para acercar el botón de volver */
 }
 
 .content-wrapper h1, .content-wrapper h2 {
@@ -149,6 +133,8 @@ th {
     color: #A8C7FA;
     text-decoration: none;
     font-weight: 500;
+    display: inline-block;
+    margin-bottom: 2rem;
 }
 
 /* --- Estilos del Formulario de Contacto --- */
@@ -157,6 +143,12 @@ th {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    text-align: left;
+}
+.form-intro {
+    text-align: center;
+    color: #B0B0B0;
+    margin-bottom: 1.5rem;
 }
 .form-group {
     display: flex;
@@ -180,8 +172,24 @@ th {
     outline: none;
     border-color: #A8C7FA;
 }
-.contact-form button {
-    align-self: flex-start;
+.send-message-button {
+    margin-top: 1.5rem;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #A8C7FA, #C6A7FC);
+    color: #1F1F1F;
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    align-self: center;
+    box-shadow: 0 4px 15px rgba(168, 199, 250, 0.3);
+}
+
+.send-message-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(168, 199, 250, 0.5);
 }
 
 /* --- Estilos para el Pie de Página (Footer) --- */
@@ -194,21 +202,4 @@ footer {
     color: #888;
     border-top: 1px solid #333;
     flex-shrink: 0;
-}
-
-/* Keyframes para la animación de brillo */
-@keyframes shimmer {
-    from {
-        left: -100%;
-    }
-    to {
-        left: 100%;
-    }
-}
-
-
-
-body.no-scroll {
-    height: 100vh;
-    overflow: hidden;
 }
