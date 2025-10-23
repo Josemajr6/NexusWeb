@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexus - Documentación y Contacto</title>
+    <meta name="description" content="Documentación del proyecto Nexus y formulario de contacto. Consulta el plan del proyecto y el estudio de viabilidad.">
     <link rel="icon" type="image/png" href="assets/logo.png">
-    <link rel="stylesheet" href="moreinfo_styles.css">
+    <link rel="stylesheet" href="moreinfo-styles.css">
 </head>
 <body>
 
     <main class="menu-container">
-        <!-- Botón "Volver al inicio" movido arriba --><a href="index.html" class="back-button">&larr; Volver al inicio</a>
+        
+        <a href="index.html" class="back-button">&larr; Volver al inicio</a>
 
         <h1>Documentación del Proyecto</h1>
         <p class="menu-subtitle">Selecciona el documento que deseas consultar o envíanos un mensaje.</p>
@@ -28,7 +30,7 @@
 
         <hr>
 
-        <h1>Contacto</h1>
+        <h2>Contacto</h2>
         <p class="form-intro">¿Tienes alguna pregunta o sugerencia? ¡Nos encantaría escucharla!</p>
         
         <form class="contact-form" action="https://formspree.io/f/mjkadjaw" method="POST">
@@ -44,8 +46,11 @@
                 <label for="message">Mensaje:</label>
                 <textarea id="message" name="message" rows="6" required></textarea>
             </div>
-            <!-- Botón de enviar mensaje mejorado --><button type="submit" class="send-message-button">Enviar Mensaje</button>
             
+            <!-- Texto del botón envuelto en un <span> -->
+            <button type="submit" class="send-message-button">
+                <span>Enviar Mensaje</span>
+            </button>
         </form>
         
     </main>

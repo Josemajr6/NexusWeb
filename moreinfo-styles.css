@@ -74,7 +74,7 @@ main {
 .content-wrapper {
     max-width: 800px;
     margin: 0 auto;
-    padding-top: 1rem; /* Reducido para acercar el botón de volver */
+    padding-top: 1rem;
 }
 
 .content-wrapper h1, .content-wrapper h2 {
@@ -172,25 +172,71 @@ th {
     outline: none;
     border-color: #A8C7FA;
 }
+
+/* --- NUEVA ANIMACIÓN DE BOTÓN DE ENVÍO --- */
 .send-message-button {
     margin-top: 1.5rem;
-    padding: 12px 24px;
-    background: linear-gradient(135deg, #A8C7FA, #C6A7FC);
-    color: #1F1F1F;
+    padding: 13px 25px; /* Ligeramente más grande */
+    background-color: transparent;
     border: none;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 700;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    align-self: center;
-    box-shadow: 0 4px 15px rgba(168, 199, 250, 0.3);
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    align-self: center; /* Centrar el botón */
 }
 
+.send-message-button span {
+    position: relative;
+    z-index: 3;
+    color: #E0E0E0; /* Texto claro */
+    font-size: 1rem;
+}
+
+/* Cara oscura del botón */
+.send-message-button::after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    right: 1px;
+    bottom: 1px;
+    background-color: #2a2a2a; /* Fondo oscuro */
+    border-radius: 50px;
+    z-index: 2;
+    transition: background-color 0.3s ease;
+}
+
+/* Gradiente giratorio del borde */
+.send-message-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    z-index: 1;
+    background: conic-gradient(
+        from 0deg,
+        #A8C7FA, 
+        #C6A7FC, 
+        #A8C7FA
+    );
+    transform: translate(-50%, -50%);
+    animation: spin-gradient 4s infinite linear;
+}
+
+.send-message-button:hover::after {
+    background-color: #333; /* Un poco más claro al pasar el ratón */
+}
 .send-message-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(168, 199, 250, 0.5);
 }
+
 
 /* --- Estilos para el Pie de Página (Footer) --- */
 footer {
@@ -203,3 +249,14 @@ footer {
     border-top: 1px solid #333;
     flex-shrink: 0;
 }
+
+/* --- Keyframes para animaciones --- */
+@keyframes spin-gradient {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
