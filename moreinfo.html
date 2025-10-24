@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Nexus - Documentación y Contacto</title>
-    <meta name="description" content="Documentación del proyecto Nexus y formulario de contacto. Consulta el plan del proyecto y el estudio de viabilidad.">
+    <meta name="description" content="Consulta la documentación del proyecto Nexus (Plan de Proyecto, Requisitos, Viabilidad) o contacta con el equipo.">
+    
     <link rel="icon" type="image/png" href="assets/logo.png">
     <link rel="stylesheet" href="moreinfo-styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v13/font/simple-icons.min.css">
+
+    <meta property="og:title" content="Nexus - Documentación y Contacto">
+    <meta property="og:description" content="Consulta la documentación del proyecto Nexus o contacta con el equipo.">
+    <meta property="og:image" content="https://nexus-app.es/assets/logo.png">
+    <meta property="og:url" content="https://nexus-app.es/moreinfo.html">
+    <meta property="og:type" content="website">
 </head>
 <body>
 
@@ -25,6 +34,10 @@
             <a href="viability-study.html" class="menu-button">
                 <h2>Estudio de Viabilidad</h2>
                 <p>Análisis técnico, económico y operativo de Nexus.</p>
+            </a>
+            <a href="requirements.html" class="menu-button">
+                <h2>Documento de Requisitos</h2>
+                <p>Detalle de los requisitos funcionales y no funcionales de la app.</p>
             </a>
         </div>
 
@@ -46,18 +59,47 @@
                 <label for="message">Mensaje:</label>
                 <textarea id="message" name="message" rows="6" required></textarea>
             </div>
-            
-            <!-- Texto del botón envuelto en un <span> -->
+            <!-- Botón actualizado con icono -->
             <button type="submit" class="send-message-button">
-                <span>Enviar Mensaje</span>
+                <span>ㅤㅤEnviar Mensaje</span>
+                <i data-lucide="send"></i>
             </button>
         </form>
         
     </main>
     
-    <footer>
-        <p>&copy; 2025 Nexus. Todos los derechos reservados.</p>
+    <footer class="advanced-footer">
+        <div class="footer-grid-container">
+            <div class="footer-section footer-brand">
+                <h3>Nexus.</h3>
+                <p>Deja de buscar, empieza a encontrar.</p>
+            </div>
+            <div class="footer-section footer-links">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="terms.html">Términos de Servicio</a></li>
+                    <li><a href="privacy.html">Política de Privacidad</a></li>
+                </ul>
+            </div>
+            <div class="footer-section footer-social">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="https://x.com/somosnexusapp" title="X (Twitter)" target="_blank"><i class="si si-x"></i></a>
+                    <a href="https://www.instagram.com/somosnexusapp/" title="Instagram" target="_blank"><i class="si si-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@nexusapp?lang=es" title="TikTok" target="_blank"><i class="si si-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Nexus App. Todos los derechos reservados.</p>
+        </div>
     </footer>
+
+    <!-- Scripts de Lucide Icons para el icono de enviar -->
+    <script src="https://unpkg.com/lucide-react@latest/dist/umd/lucide.js"></script>
+    <script>
+      lucide.createIcons();
+    </script>
 
 </body>
 </html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Nexus - Documento de Requisitos</title>
+    <meta name="description" content="Documento de Requisitos Funcionales y No Funcionales de la aplicación Nexus.">
+    
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="stylesheet" href="moreinfo-styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v13/font/simple-icons.min.css">
+
+    <meta property="og:title" content="Nexus - Documento de Requisitos">
+    <meta property="og:description" content="Documento de Requisitos Funcionales y No Funcionales de la aplicación Nexus.">
+    <meta property="og:image" content="https://nexus-app.es/assets/logo.png">
+    <meta property="og:url" content="https://nexus-app.es/requirements.html">
+    <meta property="og:type" content="article">
+</head>
+<body>
+
+    <main class="content-wrapper">
+        <a href="moreinfo.html" class="back-button">&larr; Volver al menú</a>
+
+        <h1>Documento de Requisitos</h1>
+        <p class="project-meta"><strong>Creado por:</strong> Juan José Gamero López (18/09/2025)</p>
+        <p class="project-meta"><strong>Responsables:</strong> Rafa Lázaro, José Manuel Jiménez, Juan José Gamero.</p>
+
+        <hr>
+
+        <h2>1. INTRODUCCIÓN</h2>
+        <p>Este documento detalla los requisitos funcionales y no funcionales para la primera versión de la aplicación Nexus. El objetivo es definir con claridad cada una de las características y comportamientos del sistema para guiar al equipo de desarrollo y asegurar que el producto final cumpla con la visión del proyecto: ser la plataforma de ahorro definitiva en España.</p>
+        
+        <h2>2. REQUISITOS FUNCIONALES</h2>
+
+        <h3>Módulo 1. Gestión de Usuarios y Perfiles</h3>
+        
+        <h4>RF-01: Registro de Nuevos Usuarios</h4>
+        <p>La aplicación debe permitir que una persona se registre para crear una cuenta. Se ofrecerán dos vías de registro:</p>
+        <ul>
+            <li><strong>Registro por correo electrónico:</strong> El usuario deberá proporcionar un nombre de usuario (único), un correo electrónico válido y una contraseña segura.</li>
+            <li><strong>Registro con redes sociales:</strong> Se ofrecerá la opción de registrarse usando cuentas de Google o Apple.</li>
+        </ul>
+
+        <h4>RF-02: Autenticación de Usuarios (Inicio de Sesión)</h4>
+        <p>Los usuarios registrados deben poder iniciar sesión con su correo y contraseña, o a través de Google/Apple. Deberá incluir una funcionalidad de "¿Has olvidado tu contraseña?".</p>
+
+        <h4>RF-03: Gestión del Perfil de Usuario</h4>
+        <p>Desde su pestaña de "Perfil", el usuario debe poder ver y editar su información pública (Foto, Nombre de usuario, Biografía, Ubicación). El perfil también mostrará sus anuncios, chollos subidos y valoraciones recibidas.</p>
+
+        <h3>Módulo 2. Gestión de Productos de Segunda Mano</h3>
+
+        <h4>RF-04: Publicación de Anuncios de Segunda Mano</h4>
+        <p>Cualquier usuario debe poder publicar un artículo. El formulario solicitará: Título, Descripción, Fotografías, Categoría, Precio y Estado. Se implementará una IA que rellenará campos analizando las fotografías, permitiendo al usuario modificarlos después.</p>
+
+        <h4>RF-05: Gestión de Anuncios Propios</h4>
+        <p>Un usuario debe poder Editar, Marcar como reservado, Marcar como vendido, Eliminar u Ocultar/Mostrar sus propios anuncios.</p>
+
+        <h3>Módulo 3. Gestión de Ofertas y Anuncios de Empresas</h3>
+
+        <h4>RF-06: Subida de Ofertas por Parte de los Usuarios</h4>
+        <p>Los usuarios podrán compartir ofertas que encuentren. El formulario pedirá: Enlace, Título, Tienda, Precio Original y de Oferta, Categoría e Imagen.</p>
+
+        <h4>RF-07: Visualización de Ofertas y Contenido Publicitario</h4>
+        <p>La aplicación mostrará ofertas de primera mano y contenido publicitario de empresas colaboradoras, destacándolos visualmente en la parte superior de la pestaña principal.</p>
+
+        <h3>Módulo 4. Navegación y Visualización Principal</h3>
+
+        <h4>RF-08: Pestaña Principal ("Ofertas")</h4>
+        <p>Será la pantalla de bienvenida. La zona superior mostrará Ofertas y Publicidad. La zona inferior mostrará los últimos artículos de segunda mano subidos por usuarios cercanos.</p>
+
+        <h4>RF-09: Pestaña de Categorías</h4>
+        <p>Una sección dedicada donde se mostrarán todas las categorías principales (Vehículos, Electrónica, Moda, etc.).</p>
+
+        <h4>RF-10: Sistema de Búsqueda Inteligente</h4>
+        <p>La barra de búsqueda buscará simultáneamente en la base de datos de ofertas nuevas y en la de artículos de segunda mano, mostrando los resultados en pestañas separadas.</p>
+
+        <h3>Módulo 5. Sistemas de reseñas y valoraciones</h3>
+
+        <h4>RF-11: Sistema de "Likes" (Me Gusta)</h4>
+        <p>Tanto los anuncios de segunda mano como los chollos tendrán un botón de "like". El número de "likes" será un factor importante para el algoritmo de visibilidad.</p>
+
+        <h4>RF-12: Sistema de Comentarios</h4>
+        <p>Cada anuncio y chollo tendrá su propia sección de comentarios para interactuar, hacer preguntas o reportar comentarios inapropiados.</p>
+
+        <h2>3. REQUISITOS NO FUNCIONALES</h2>
+
+        <h4>RNF-01: Rendimiento</h4>
+        <p>La aplicación debe ser rápida y fluida. Los tiempos de carga no deberán superar los 2 segundos en una conexión 4G estándar.</p>
+
+        <h4>RNF-02: Usabilidad y Accesibilidad</h4>
+        <p>La interfaz debe ser limpia, moderna e intuitiva, siguiendo las guías de estilo de Apple (Human Interface Guidelines) y Google (Material Design).</p>
+
+        <h4>RNF-03: Seguridad</h4>
+        <p>La seguridad de los datos es prioritaria. Las contraseñas se almacenarán cifradas (hashed) y toda la comunicación será vía HTTPS, cumpliendo con el RGPD.</p>
+
+        <h4>RNF-04: Compatibilidad</h4>
+        <p>Se garantizará la compatibilidad con las últimas 3 versiones principales de iOS y Android, y con la mayoría de navegadores web modernos.</p>
+    </main>
+    
+    <footer class="advanced-footer">
+        <div class="footer-grid-container">
+            <div class="footer-section footer-brand">
+                <h3>Nexus.</h3>
+                <p>Deja de buscar, empieza a encontrar.</p>
+            </div>
+            <div class="footer-section footer-links">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="terms.html">Términos de Servicio</a></li>
+                    <li><a href="privacy.html">Política de Privacidad</a></li>
+                </ul>
+            </div>
+            <div class="footer-section footer-social">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="https://x.com/somosnexusapp" title="X (Twitter)" target="_blank"><i class="si si-x"></i></a>
+                    <a href="https://www.instagram.com/somosnexusapp/" title="Instagram" target="_blank"><i class="si si-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@nexusapp?lang=es" title="TikTok" target="_blank"><i class="si si-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Nexus App. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
