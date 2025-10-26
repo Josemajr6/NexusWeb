@@ -8,6 +8,8 @@ body {
     background-color: #1F1F1F;
     color: #E0E0E0;
     line-height: 1.6;
+    overflow-x: hidden; /* Evita scroll horizontal */
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23A8C7FA"><circle cx="8" cy="8" r="4"/></svg>'), auto;
 }
 
 /* --- ESTILOS PARA LA PÁGINA DE INICIO FIJA Y SIN SCROLL --- */
@@ -17,9 +19,8 @@ body.no-scroll {
 }
 /* --------------------------------------------------------- */
 
-
 main {
-    flex-grow: 1; 
+    flex-grow: 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,8 +53,16 @@ main {
     color: #B0B0B0;
 }
 
-.info-button {
-    margin-top: 2.5rem;
+/* Contenedor para los botones */
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem; /* Espacio entre botones */
+    margin-top: 3.5rem; /* Espacio desde el párrafo */
+}
+
+.info-button, .demo-button {
     padding: 12px 24px;
     background-color: rgba(255, 255, 255, 0.1);
     color: #E0E0E0;
@@ -61,10 +70,24 @@ main {
     border-radius: 50px;
     text-decoration: none;
     font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23A8C7FA"><circle cx="8" cy="8" r="4"/></svg>'), auto;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
+}
+
+/* Estilo principal para el botón de demo */
+.demo-button {
+    background: linear-gradient(135deg, #A8C7FA, #C6A7FC);
+    color: #1F1F1F;
+    font-weight: 700;
+    border: none;
+    box-shadow: 0 4px 15px rgba(168, 199, 250, 0.3);
+}
+
+.demo-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(168, 199, 250, 0.5);
 }
 
 .info-button::before {
@@ -162,3 +185,4 @@ footer {
         transform: translateY(0);
     }
 }
+

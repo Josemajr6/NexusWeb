@@ -4,56 +4,61 @@ body {
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: Arial, system-ui, sans-serif; /* Fuente Arial como base */
     background-color: #1F1F1F;
     color: #E0E0E0;
     line-height: 1.6;
-    overflow-x: hidden; /* Evita el scroll horizontal */
+    overflow-x: hidden;
+    /* Cursor moderno */
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23A8C7FA"><circle cx="8" cy="8" r="4"/></svg>'), auto;
 }
+
+a, button {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23A8C7FA"><circle cx="8" cy="8" r="4"/></svg>'), auto;
+}
+
 
 main {
-    flex-grow: 1; 
+    flex-grow: 1;
     padding: 2rem;
+    /* Eliminada la animación CSS general de main */
 }
 
-/* --- Estilos para la PÁGINA DE MENÚ (moreinfo.html) --- */
+/* --- Estilos PÁGINA DE MENÚ --- */
 .menu-container {
     text-align: center;
-    max-width: 600px;
+    max-width: 900px;
     width: 100%;
     margin: 0 auto;
 }
-
 .menu-container h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+    font-size: 2.8rem;
+    margin-bottom: 0.8rem;
     background: linear-gradient(135deg, #A8C7FA, #C6A7FC);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    /* Animación de entrada */
-    opacity: 0;
-    animation: pop-in-bouncy 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-    animation-delay: 0.1s;
+    border-bottom: none;
+    padding-bottom: 0;
+    /* Animación GSAP controlará la entrada */
 }
-
 .menu-subtitle {
     color: #B0B0B0;
     margin-bottom: 3rem;
     font-size: 1.2rem;
-    /* Animación de entrada */
-    opacity: 0;
-    animation: pop-in-bouncy 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-    animation-delay: 0.2s;
+    /* Animación GSAP controlará la entrada */
 }
-
 .menu-options {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 1.5rem;
     width: 100%;
     margin: 0 auto 3rem auto;
 }
-
+@media (min-width: 768px) {
+    .menu-options {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 .menu-button {
     background-color: #2a2a2a;
     border: 1px solid #333;
@@ -61,441 +66,134 @@ main {
     padding: 1.5rem;
     text-decoration: none;
     color: #E0E0E0;
-    /* Transición mejorada */
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    
-    /* Animación de entrada */
-    opacity: 0;
-    animation: pop-in-bouncy 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    text-align: left;
+    /* Animación GSAP controlará la entrada */
 }
-
 .menu-button:hover {
     transform: translateY(-5px);
     border-color: #A8C7FA;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
-
-.menu-button h2 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.5rem;
-}
-
-.menu-button p {
-    margin: 0;
-    color: #B0B0B0;
-}
-
-/* Retraso de animación escalonado para los botones del menú */
-.menu-button:nth-child(1) { animation-delay: 0.3s; }
-.menu-button:nth-child(2) { animation-delay: 0.4s; }
-.menu-button:nth-child(3) { animation-delay: 0.5s; }
+.menu-button h2 { margin: 0 0 0.5rem 0; font-size: 1.5rem; }
+.menu-button p { margin: 0; color: #B0B0B0; }
 
 
-/* --- Estilos para las PÁGINAS DE DOCUMENTACIÓN --- */
-.content-wrapper {
-    max-width: 800px;
-    margin: 0 auto;
-    padding-top: 1rem; 
-}
-
-.content-wrapper h1, .content-wrapper h2 {
+/* --- Estilos PÁGINAS DE DOCUMENTACIÓN (General) --- */
+.content-wrapper { max-width: 800px; margin: 0 auto; padding-top: 0; }
+.content-wrapper h1, .content-wrapper h2, .content-wrapper h3,
+.uml-documentation h3, .uml-documentation h4, .uml-documentation h5 {
     background: linear-gradient(135deg, #A8C7FA, #C6A7FC);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 10px;
-    margin-top: 2.5rem;
-}
-
-.content-wrapper h1 {
-    text-align: center;
-    font-size: 2.5rem;
-}
-
-.content-wrapper h2 {
-    font-size: 1.8rem;
-}
-
-.content-wrapper p {
-    color: #B0B0B0;
-    margin-bottom: 1rem;
-}
-
-.project-meta {
-    text-align: center;
-    color: #999;
-    margin-top: -10px;
-}
-
-hr {
-    border: none;
-    height: 1px;
-    background-color: rgba(255, 255, 255, 0.1);
-    margin: 3rem 0;
-    
-    /* Animación de entrada */
-    opacity: 0;
-    animation: pop-in-bouncy 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-    animation-delay: 0.6s;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 2rem 0;
-}
-
-th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-th {
-    color: #A8C7FA;
-}
-
-.back-button {
-    color: #A8C7FA;
-    text-decoration: none;
-    font-weight: 500;
-    display: inline-block;
-    margin-bottom: 2rem;
-
-    /* Animación de entrada */
-    opacity: 0;
-    animation: pop-in-bouncy 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-    animation-delay: 0.1s;
-}
-
-/* --- Estilos del Formulario de Contacto --- */
-.contact-form {
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    text-align: left; /* <-- Este era el culpable */
-
-    /* Animación de entrada */
-    opacity: 0;
-    animation: pop-in-bouncy 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-    animation-delay: 0.7s;
-}
-.form-intro {
-    text-align: center;
-    color: #B0B0B0;
-    margin-bottom: 1.5rem;
-}
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-.contact-form label {
-    margin-bottom: 0.5rem;
-    color: #B0B0B0;
-}
-.contact-form input,
-.contact-form textarea {
-    background-color: #2a2a2a;
-    border: 1px solid #444;
-    border-radius: 8px;
-    padding: 12px;
-    color: #E0E0E0;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-}
-.contact-form input:focus,
-.contact-form textarea:focus {
-    outline: none;
-    border-color: #A8C7FA;
-}
-
-/* --- NUEVO BOTÓN DE ENVIAR MENSAJE (BORDE ANIMADO) --- */
-.send-message-button {
-    margin-top: 1.5rem;
-    padding: 14px 28px;
-    background-color: #2a2a2a; /* Fondo oscuro */
-    color: #E0E0E0; /* Texto claro */
-    border: 2px solid transparent; /* Borde transparente inicial */
-    border-radius: 50px;
-    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding-bottom: 0.6rem;
+    margin-top: 3.5rem;
+    margin-bottom: 1.8rem;
     font-weight: 700;
-    font-size: 1rem;
-    cursor: pointer;
-    align-self: center;
-    
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    text-align: center; /* <-- ESTA ES LA CORRECCIÓN */
-
-    position: relative; /* Necesario para el borde animado */
-    overflow: hidden; /* Contiene los pseudo-elementos */
-    
-    transition: all 0.3s ease;
+    /* Animación GSAP controlará la entrada */
 }
+.content-wrapper h1 { text-align: center; font-size: 3rem; width: 100%; margin-top: 0; }
+.content-wrapper h2 { font-size: 2.2rem; }
+.content-wrapper h3, .uml-documentation h3 { font-size: 1.8rem; }
+.uml-documentation h4 { font-size: 1.6rem; border-left: 3px solid #C6A7FC; padding-left: 0.8rem; background: none; -webkit-background-clip: unset; -webkit-text-fill-color: unset; color: #A8C7FA; margin-top: 2.5rem; border-bottom: none; padding-bottom: 0; }
+.uml-documentation h5 { font-size: 1.3rem; background: none; -webkit-background-clip: unset; -webkit-text-fill-color: unset; color: #C6A7FC; margin-top: 2rem; border-bottom: none; padding-bottom: 0; }
 
-/* Pseudo-elemento para el fondo del borde */
-.send-message-button::before {
-    content: '';
-    position: absolute;
-    top: -50%; left: -50%;
-    width: 200%; height: 200%;
-    background: conic-gradient(
-        from 0deg,
-        #A8C7FA, #C6A7FC, #A8C7FA
-    );
-    animation: rotate-gradient 4s linear infinite; /* Animación de rotación */
-    z-index: 1; /* Detrás del contenido */
-}
+.content-wrapper p, .content-wrapper li { color: #B0B0B0; margin-bottom: 1rem; }
+.content-wrapper ul { padding-left: 25px; list-style: disc; margin-bottom: 1.5rem; }
+.content-wrapper li { margin-bottom: 0.5rem; }
+.content-wrapper strong { color: #E0E0E0; font-weight: 600; }
+.content-wrapper code, .content-wrapper em { color: #8be9fd; font-style: normal; font-family: 'Courier New', Courier, monospace; background-color: #3a3a3a; padding: 0.2em 0.5em; border-radius: 4px; font-size: 0.9em; }
 
-/* Pseudo-elemento para tapar el fondo y crear el efecto de "borde" */
-.send-message-button::after {
-    content: '';
-    position: absolute;
-    top: 2px; left: 2px;
-    right: 2px; bottom: 2px;
-    background-color: #2a2a2a; /* Mismo color que el fondo del botón */
-    border-radius: 50px; /* Borde interior */
-    z-index: 2; /* Encima del fondo, detrás del texto */
-}
+/* Estilos Índice */
+.toc { background-color: #2a2a2a; border: 1px solid #444; border-radius: 12px; padding: 2.5rem; margin-bottom: 4rem; margin-top: 1.5rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Animación GSAP controlará la entrada */ }
+.toc-title { font-size: 2.2rem; font-weight: 700; text-align: center; margin: 0 0 1.5rem 0; padding-bottom: 1rem; background: linear-gradient(135deg, #A8C7FA, #C6A7FC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; border-bottom: 2px solid; border-image: linear-gradient(to right, #A8C7FA, #C6A7FC) 1; border-image-slice: 1; }
+.toc-list { list-style: none; padding: 0; margin: 0; }
+.toc-item { margin-bottom: 1.2rem; padding-left: 15px; border-left: 3px solid transparent; transition: border-left 0.3s ease, padding-left 0.3s ease; }
+.toc-item:hover { border-left: 3px solid #A8C7FA; padding-left: 20px; }
+.toc-subitem { margin-left: 20px; margin-bottom: 0.8rem; padding-left: 10px; }
+.toc-subitem:hover { padding-left: 15px; }
+.toc-link { color: #B0B0B0; text-decoration: none; font-size: 1.1rem; display: block; transition: color 0.3s ease; }
+.toc-item:hover .toc-link { background: linear-gradient(135deg, #E0E0E0, #C6A7FC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-/* Contenido del botón (texto e icono) */
-.send-message-button span,
-.send-message-button i {
-    position: relative;
-    z-index: 3; /* Encima de todo */
-    color: #E0E0E0;
-    transition: color 0.3s ease;
-}
+.project-meta { text-align: center; color: #999; margin-top: -10px; font-size: 0.9rem; }
+hr { border: none; height: 1px; background-color: rgba(255, 255, 255, 0.1); margin: 4rem 0; /* Animación GSAP controlará la entrada */ }
+table { width: 100%; border-collapse: collapse; margin: 2.5rem 0; /* Animación GSAP controlará la entrada */ }
+th, td { padding: 14px; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+th { color: #A8C7FA; font-size: 1.1rem; }
+.back-button { font-family: inherit; color: #A8C7FA; text-decoration: none; font-weight: 500; display: inline-block; margin-bottom: 1rem; margin-top: 1.5rem; transition: color 0.3s ease; /* Animación GSAP controlará la entrada */ }
+.back-button:hover { color: #C6A7FC; }
 
-.send-message-button i {
-    width: 20px;
-    height: 20px;
-    stroke-width: 2.5;
-}
+/* --- Estilos Formulario --- */
+.contact-form { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem; text-align: left; /* Animación GSAP controlará la entrada */ }
+.form-intro { text-align: center; color: #B0B0B0; margin-bottom: 1.5rem; }
+.form-group { display: flex; flex-direction: column; }
+.contact-form label { margin-bottom: 0.5rem; color: #B0B0B0; }
+.contact-form input, .contact-form textarea { background-color: #2a2a2a; border: 1px solid #444; border-radius: 8px; padding: 12px; color: #E0E0E0; font-size: 1rem; transition: border-color 0.3s ease; }
+.contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: #A8C7FA; }
+.contact-form textarea { resize: vertical; }
+.send-message-button { margin-top: 1.5rem; padding: 14px 28px; background-color: #2a2a2a; color: #E0E0E0; border: 2px solid transparent; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1rem; cursor: pointer; align-self: center; display: inline-flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; transition: all 0.3s ease; }
+.send-message-button span { display: block; }
+.send-message-button::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(from 0deg, #A8C7FA, #C6A7FC, #A8C7FA); animation: rotate-gradient 4s linear infinite; z-index: 1; }
+.send-message-button::after { content: ''; position: absolute; top: 2px; left: 2px; right: 2px; bottom: 2px; background-color: #2a2a2a; border-radius: 50px; z-index: 2; }
+.send-message-button span, .send-message-button i { position: relative; z-index: 3; color: #E0E0E0; transition: color 0.3s ease; }
+.send-message-button:hover { box-shadow: 0 0 25px rgba(168, 199, 250, 0.4); }
+.send-message-button:hover span, .send-message-button:hover i { color: #fff; }
+.send-message-button:hover::before { animation-duration: 2s; }
 
-.send-message-button:hover {
-    box-shadow: 0 0 25px rgba(168, 199, 250, 0.4); /* Sombra brillante */
-    animation-play-state: running; /* Acelera la animación */
-}
+/* --- Estilos Footer --- */
+.advanced-footer { width: 100%; background-color: #111; color: #E0E0E0; padding: 2.5rem 2rem 1rem; border-top: 1px solid #333; flex-shrink: 0; text-align: center; }
+.footer-grid-container { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 1000px; margin: 0 auto 2rem auto; text-align: center; }
+@media (min-width: 768px) { .footer-grid-container { grid-template-columns: 2fr 1fr 1fr; text-align: left; } }
+.footer-section h3 { background: linear-gradient(135deg, #A8C7FA, #C6A7FC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.3rem; margin-bottom: 1rem; text-align: center; }
+@media (min-width: 768px) { .footer-section h3 { text-align: left; } .footer-section.footer-brand h3 { text-align: left; } }
+.footer-section.footer-brand h3 { font-size: 2rem; margin-bottom: 0.5rem; }
+.footer-section.footer-brand p { color: #B0B0B0; font-size: 0.9rem; margin: 0; text-align: center; }
+@media (min-width: 768px) { .footer-section.footer-brand p { text-align: left; } }
+.footer-section ul { list-style: none; padding: 0; margin: 0; }
+.footer-section ul li a { color: #B0B0B0; text-decoration: none; font-size: 0.9rem; margin-bottom: 0.5rem; display: block; transition: color 0.3s ease; }
+.footer-section ul li a:hover { color: #A8C7FA; }
+.footer-section.footer-social .social-icons { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
+@media (min-width: 768px) { .footer-section.footer-social .social-icons { justify-content: flex-start; } }
+.social-icons a { color: #888; transition: color 0.3s ease, transform 0.3s ease; }
+.social-icons .si { font-size: 24px; }
+.social-icons a:hover { color: #A8C7FA; transform: translateY(-3px); }
+.footer-bottom { border-top: 1px solid #222; padding-top: 1rem; margin-top: 2rem; font-size: 0.8rem; color: #666; }
 
-.send-message-button:hover span,
-.send-message-button:hover i {
-    color: #fff; /* Texto más brillante */
-}
+/* --- ESTILOS ESPECÍFICOS PARA LA PÁGINA UML (document-uml.html) --- */
+.uml-page-wrapper { max-width: none; width: 100%; padding: 0; box-sizing: border-box; }
+.uml-header-content { max-width: 800px; margin: 0 auto 2rem auto; padding: 0 1rem; box-sizing: border-box; }
+.uml-header-content .back-button { margin-top: 1.5rem; }
+.uml-header-content h1 { text-align: center; font-size: 3rem; width: 100%; margin-top: 1rem; margin-bottom: 1.5rem; background: linear-gradient(135deg, #A8C7FA, #C6A7FC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding-bottom: 0.8rem; }
+.uml-documentation { max-width: 800px; margin: 0 auto 3rem auto; padding: 0 1rem; box-sizing: border-box; color: #B0B0B0; }
+.uml-documentation h3 { background: linear-gradient(135deg, #A8C7FA, #C6A7FC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding-bottom: 0.6rem; margin-top: 3.5rem; margin-bottom: 1.8rem; font-weight: 700; font-size: 2.2rem; }
+.uml-documentation h4 { color: #A8C7FA; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; font-size: 1.6rem; border-left: 3px solid #C6A7FC; padding-left: 0.8rem; background: none; -webkit-background-clip: unset; -webkit-text-fill-color: unset; border-bottom: none; padding-bottom: 0; }
+.uml-documentation h5 { color: #C6A7FC; margin-top: 1.5rem; margin-bottom: 0.8rem; font-weight: 600; font-size: 1.3rem; background: none; -webkit-background-clip: unset; -webkit-text-fill-color: unset; border-bottom: none; padding-bottom: 0; }
+.uml-documentation ul { list-style: disc; margin-left: 25px; margin-bottom: 1.5rem; }
+.uml-documentation li { margin-bottom: 0.5rem; }
+.uml-documentation strong { color: #E0E0E0; font-weight: 600; }
+.uml-documentation code, .uml-documentation em { color: #8be9fd; font-style: normal; font-family: 'Courier New', Courier, monospace; background-color: #3a3a3a; padding: 0.2em 0.5em; border-radius: 4px; font-size: 0.9em; }
+.uml-diagram-container { border: 1px solid #444; border-radius: 16px; padding: 2.5rem 1.5rem 2rem; background-color: #262626; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); overflow-x: auto; position: relative; width: 95%; max-width: none; margin: 3rem auto; box-sizing: border-box; /* Animación GSAP controlará la entrada */ }
+.plantuml-diagram-image { display: block; margin: 0 auto; max-width: 100%; width: auto; max-height: 90vh; height: auto; background-color: transparent; padding: 0; border-radius: 0; box-shadow: none; object-fit: contain; /* Animación GSAP controlará la entrada */ }
 
-.send-message-button:hover::before {
-    animation-duration: 2s; /* Rotación más rápida al pasar el ratón */
-}
-/* -------------------------------------- */
+/* --- Animaciones CSS --- */
+@keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pop-in-bouncy { 0% { opacity: 0; transform: scale(0.8) translateY(20px); } 100% { opacity: 1; transform: scale(1) translateY(0); } }
+@keyframes rotate-gradient { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-
-/* --- Estilos para el Pie de Página (Footer AVANZADO) --- */
-.advanced-footer {
-    width: 100%;
-    background-color: #111;
-    color: #E0E0E0;
-    padding: 2.5rem 2rem 1rem;
-    border-top: 1px solid #333;
-    flex-shrink: 0;
-    text-align: center;
-}
-
-.footer-grid-container {
-    display: grid;
-    grid-template-columns: 1fr; 
-    gap: 2rem;
-    max-width: 1000px;
-    margin: 0 auto 2rem auto;
-    text-align: center; 
-}
-
-@media (min-width: 768px) {
-    .footer-grid-container {
-        grid-template-columns: 2fr 1fr 1fr; 
-        text-align: left; 
-    }
-}
-
-.footer-section h3 {
-    background: linear-gradient(135deg, #A8C7FA, #C6A7FC);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    text-align: center; 
-}
-
-@media (min-width: 768px) {
-    .footer-section h3 {
-        text-align: left; 
-    }
-    .footer-section.footer-brand h3 {
-        text-align: left;
-    }
-}
-
-.footer-section.footer-brand h3 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-}
-
-.footer-section.footer-brand p {
-    color: #B0B0B0;
-    font-size: 0.9rem;
-    margin: 0;
-    text-align: center; 
-}
-
-@media (min-width: 768px) {
-    .footer-section.footer-brand p {
-        text-align: left; 
-    }
-}
-
-
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-section ul li a {
-    color: #B0B0B0;
-    text-decoration: none;
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-    display: block;
-    transition: color 0.3s ease;
-}
-
-.footer-section ul li a:hover {
-    color: #A8C7FA;
-}
-
-.footer-section.footer-social .social-icons {
-    display: flex;
-    justify-content: center; 
-    gap: 1.5rem;
-    margin-top: 1rem;
-}
-
-@media (min-width: 768px) {
-    .footer-section.footer-social .social-icons {
-        justify-content: flex-start; 
-    }
-}
-
-
-.social-icons a {
-    color: #888;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.social-icons .si {
-    font-size: 24px; 
-}
-
-.social-icons a:hover {
-    color: #A8C7FA;
-    transform: translateY(-3px);
-}
-
-.footer-bottom {
-    border-top: 1px solid #222;
-    padding-top: 1rem;
-    margin-top: 2rem;
-    font-size: 0.8rem;
-    color: #666;
-}
-
-/* --- NUEVAS ANIMACIONES --- */
-@keyframes pop-in-bouncy {
-    0% {
-        opacity: 0;
-        transform: scale(0.8) translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
-
-/* Animación de rotación para el borde */
-@keyframes rotate-gradient {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-
-/* Media Queries para Responsive Design */
+/* --- Media Queries --- */
 @media (max-width: 767px) {
-    main {
-        padding: 1rem;
-    }
-
-    .menu-container h1 {
-        font-size: 2rem;
-    }
-
-    .menu-subtitle {
-        font-size: 1rem;
-        margin-bottom: 2rem;
-    }
-
-    .menu-button {
-        padding: 1rem;
-    }
-
-    .menu-button h2 {
-        font-size: 1.3rem;
-    }
-
-    .menu-button p {
-        font-size: 0.9rem;
-    }
-
-    .content-wrapper {
-        padding: 1rem;
-    }
-
-    .content-wrapper h1 {
-        font-size: 2rem;
-    }
-
-    .content-wrapper h2 {
-        font-size: 1.5rem;
-    }
-
-    .back-button {
-        margin-bottom: 1.5rem;
-        font-size: 0.9rem;
-    }
-
-    .contact-form {
-        margin-top: 1rem;
-        gap: 1rem;
-    }
-
-    .contact-form label {
-        font-size: 0.9rem;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-        padding: 10px;
-        font-size: 0.9rem;
-    }
-
-    .send-message-button {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-    }
+    main { padding: 1rem; }
+    .content-wrapper h1 { font-size: 2.2rem; }
+    .content-wrapper h2 { font-size: 1.8rem; }
+    .uml-header-content { padding: 0 0.5rem; }
+    .uml-documentation { padding: 0 0.5rem; }
+    .uml-documentation h3 { font-size: 1.8rem; }
+    .uml-documentation h4 { font-size: 1.4rem; }
+    .uml-documentation h5 { font-size: 1.2rem; }
+    .uml-diagram-container { width: calc(100% - 1rem); padding: 1.5rem 0.5rem; margin: 1.5rem auto; }
+    .plantuml-diagram-image { max-height: 70vh; }
+    .back-button { margin-top: 1rem; }
+    /* ... */
 }
 

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus - Diagrama UML</title>
+    <meta name="description" content="Diagrama de clases UML que muestra la arquitectura y relaciones principales de la aplicación Nexus.">
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="stylesheet" href="moreinfo-styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v13/font/simple-icons.min.css">
+
+    <meta property="og:title" content="Nexus - Diagrama UML">
+    <meta property="og:description" content="Diagrama de clases UML de la arquitectura de Nexus.">
+    <meta property="og:image" content="https://nexus-app.es/assets/logo.png">
+    <meta property="og:url" content="https://nexus-app.es/document-uml.html">
+    <meta property="og:type" content="article">
+</head>
+<body>
+
+    <main class="uml-page-wrapper">
+        <div class="uml-header-content">
+            <a href="moreinfo.html" class="back-button">&larr; Volver al menú</a>
+            <h1>Diagrama UML</h1>
+        </div>
+
+        <div class="uml-documentation">
+             <!-- Índice -->
+            <nav class="toc">
+                <h2 class="toc-title">Índice</h2>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion-uml" class="toc-link">Introducción</a></li>
+                    <li class="toc-item"><a href="#clases-principales" class="toc-link">Clases Principales</a></li>
+                    <li class="toc-item toc-subitem"><a href="#gestion-usuarios" class="toc-link">1. Usuarios y Perfiles</a></li>
+                    <li class="toc-item toc-subitem"><a href="#gestion-contenido" class="toc-link">2. Contenido</a></li>
+                    <li class="toc-item toc-subitem"><a href="#clases-auxiliares" class="toc-link">3. Clases Auxiliares</a></li>
+                    <li class="toc-item toc-subitem"><a href="#clases-interaccion" class="toc-link">4. Interacción Social</a></li>
+                    <li class="toc-item toc-subitem"><a href="#clases-comunicacion" class="toc-link">5. Comunicación</a></li>
+                    <li class="toc-item"><a href="#relaciones" class="toc-link">Relaciones entre Clases</a></li>
+                     <li class="toc-item"><a href="#esquema-uml" class="toc-link">Esquema Gráfico</a></li>
+                </ul>
+            </nav>
+
+            <h3 id="introduccion-uml">Introducción al Modelo de Datos de Nexus</h3>
+            <p>El presente documento detalla la estructura fundamental de la información que la aplicación Nexus gestionará, tal como se representa en el Diagrama de Clases UML a continuación. Este diagrama funciona como el "plano" conceptual de la base de datos y la lógica de negocio, mostrando las entidades clave de la aplicación, los datos que cada una almacena (sus atributos) y cómo se interconectan entre sí (sus relaciones).</p>
+            <p>Entender este modelo es vital para cualquier etapa del desarrollo. Nexus, al combinar ofertas de productos nuevos con un mercado de segunda mano, maneja una amplia variedad de información, incluyendo perfiles de usuario, anuncios de productos, interacciones sociales y sistemas de comunicación.</p>
+            <p>Esta versión del modelo es la más completa y precisa hasta la fecha, reflejando fielmente el diseño del diagrama UML proporcionado. Incorpora identificadores enteros para simplificar, una denominación clara para las ofertas de usuario (<code>OfertaUsuario</code>), una gestión estructurada de los tipos de ofertas administradas, la inclusión de una funcionalidad de <code>ListaFavoritos</code> para la organización personalizada de contenido, y la tipificación de estados de producto mediante un enumerador (<code>ESTADOPRODUCTO</code>).</p>
+
+            <h3 id="clases-principales">Clases Principales y sus Atributos</h3>
+            <p>Las clases son los componentes básicos de nuestro sistema, representando los tipos de objetos o conceptos fundamentales que la aplicación necesita gestionar y almacenar.</p>
+
+            <h4 id="gestion-usuarios">1. Gestión de Usuarios y Perfiles</h4>
+            <h5>USUARIO (Clase Base)</h5>
+            <p><strong>Propósito:</strong> Representa a cualquier persona o entidad con una cuenta registrada en la plataforma Nexus.</p>
+            <ul>
+                <li><strong>id: Integer:</strong> Identificador único.</li>
+                <li><strong>user: String {único}:</strong> Alias público único.</li>
+                <li><strong>email: String {único}:</strong> Email para login y comunicaciones.</li>
+                <li><strong>password: String:</strong> Contraseña cifrada.</li>
+                <li><strong>fechaRegistro: DateTime:</strong> Fecha de registro.</li>
+                <li><strong>rol: Enum&lt;"Particular", "Empresa_Publicidad", "Admin"&gt;:</strong> Tipo de acceso.</li>
+            </ul>
+            <p><strong>Funcionalidades:</strong> <code>registrarse(datos)</code>, <code>iniciarSesion(credenciales)</code>, <code>editarPerfil(datos)</code>.</p>
+
+            <h5>PERFIL</h5>
+            <p><strong>Propósito:</strong> Información pública y personalizable del usuario.</p>
+             <ul>
+                <li><strong>id: Integer:</strong> Identificador único.</li>
+                <li><strong>esVerificado: Boolean:</strong> Indicador de verificación.</li>
+                <li><strong>fotoPerfil: String (URL):</strong> Imagen de perfil.</li>
+                <li><strong>biografia: String (opcional):</strong> Texto descriptivo.</li>
+                <li><strong>ubicacion: String:</strong> Ubicación geográfica.</li>
+                <li><strong>reputacion: Integer (0-5 estrellas):</strong> Valoración de la comunidad.</li>
+            </ul>
+
+            <h5>PARTICULAR (Subclase de USUARIO)</h5>
+            <p><strong>Propósito:</strong> Usuario individual para compra/venta y subida de ofertas.</p>
+            <ul><li><strong>telefono: String (opcional):</strong> Contacto opcional.</li></ul>
+
+            <h5>EMPRESAPUBLICIDAD (Subclase de USUARIO)</h5>
+            <p><strong>Propósito:</strong> Empresa colaboradora para publicidad o afiliación.</p>
+             <ul>
+                <li><strong>nombreComercial: String</strong></li>
+                <li><strong>cif: String {único}</strong></li>
+                <li><strong>contactoPrincipal: String</strong></li>
+                <li><strong>emailContacto: String</strong></li>
+                <li><strong>tipoServicioContratado: Enum&lt;"Publicidad_Banner", "Comision_Afiliacion"&gt;</strong></li>
+                <li><strong>fechaContrato: DateTime</strong></li>
+            </ul>
+
+            <h4 id="gestion-contenido">2. Gestión de Contenido (Productos y Ofertas)</h4>
+            <h5>CONTENIDOPUBLICABLE (Clase Abstracta)</h5>
+             <p><strong>Propósito:</strong> Base común para anuncios y ofertas con interacciones.</p>
+             <ul>
+                 <li><strong>id: Integer</strong></li>
+                 <li><strong>titulo: String</strong></li>
+                 <li><strong>fechaPublicacion: DateTime</strong></li>
+                 <li><strong>numLikes: Integer</strong></li>
+                 <li><strong>numComentarios: Integer</strong></li>
+             </ul>
+             <p><strong>Funcionalidades:</strong> <code>publicar()</code>, <code>eliminar()</code>.</p>
+
+            <h5>ANUNCIO (Subclase de CONTENIDOPUBLICABLE)</h5>
+            <p><strong>Propósito:</strong> Artículo de segunda mano en venta.</p>
+             <ul>
+                 <li><strong>descripcion: String</strong></li>
+                 <li><strong>estadoProducto: ENUM_ESTADOPRODUCTO</strong></li>
+                 <li><strong>precio: Double</strong></li>
+                 <li><strong>fechaModificacion: DateTime</strong></li>
+                 <li><strong>ubicacion: String</strong></li>
+                 <li><strong>estaVendido: Boolean</strong></li>
+            </ul>
+
+             <h5>OFERTAUSUARIO (Subclase de CONTENIDOPUBLICABLE)</h5>
+             <p><strong>Propósito:</strong> Oferta/descuento de producto nuevo compartida por usuarios.</p>
+             <ul>
+                 <li><strong>urlOferta: String</strong></li>
+                 <li><strong>tienda: String</strong></li>
+                 <li><strong>precioOriginal: Double (opcional)</strong></li>
+                 <li><strong>precioOferta: Double</strong></li>
+                 <li><strong>fechaExpira: DateTime (opcional)</strong></li>
+             </ul>
+
+            <h5>OFERTA_ADMINISTRADOR</h5>
+             <p><strong>Propósito:</strong> Contenido promocional gestionado por Nexus.</p>
+             <ul>
+                 <li><strong>id: Integer</strong></li>
+                 <li><strong>titulo: String</strong></li>
+                 <li><strong>descripcion: String (HTML)</strong></li>
+                 <li><strong>urlDestino: String</strong></li>
+                 <li><strong>fechaInicio: DateTime</strong></li>
+                 <li><strong>fechaFin: DateTime</strong></li>
+                 <li><strong>estaActiva: Boolean</strong></li>
+                 <li><strong>tipoOferta: TIPO_OFERTA_ADMIN</strong></li>
+             </ul>
+
+             <h5>(ENUM) TIPO_OFERTA_ADMIN</h5>
+             <p><strong>Propósito:</strong> Tipos de presentación para OFERTA_ADMINISTRADOR.</p>
+             <ul><li>Valores: Banner, Destacado_Feed, Patrocinado.</li></ul>
+
+             <h5>(ENUM) ESTADOPRODUCTO</h5>
+             <p><strong>Propósito:</strong> Condición de un producto en ANUNCIO.</p>
+             <ul><li>Valores: ComoNuevo, Usado, Defectos.</li></ul>
+
+            <h4 id="clases-auxiliares">3. Clases Auxiliares para Contenido y Organización</h4>
+             <h5>IMAGEN</h5>
+             <p><strong>Propósito:</strong> Fotografía asociada a un ANUNCIO.</p>
+             <ul><li><strong>id: Integer</strong></li><li><strong>url: String (URL)</strong></li></ul>
+
+            <h5>CATEGORIA</h5>
+            <p><strong>Propósito:</strong> Clasifica ANUNCIO y OFERTAUSUARIO.</p>
+             <ul><li><strong>id: Integer</strong></li><li><strong>nombre: String {único}</strong></li><li><strong>icono: String (URL)</strong></li></ul>
+
+            <h4 id="clases-interaccion">4. Clases de Interacción Social</h4>
+            <h5>COMENTARIO</h5>
+            <p><strong>Propósito:</strong> Interacción textual sobre CONTENIDOPUBLICABLE.</p>
+            <ul><li><strong>id: Integer</strong></li><li><strong>texto: String</strong></li><li><strong>fecha: DateTime</strong></li><li><strong>esReportado: Boolean</strong></li></ul>
+             <p><strong>Funcionalidades:</strong> <code>reportar()</code>.</p>
+
+            <h5>LIKE</h5>
+            <p><strong>Propósito:</strong> Acción "me gusta" sobre CONTENIDOPUBLICABLE.</p>
+            <ul><li><strong>id: Integer</strong></li><li><strong>fecha: DateTime</strong></li></ul>
+
+            <h5>LISTAFAVORITOS</h5>
+            <p><strong>Propósito:</strong> Permite guardar CONTENIDOPUBLICABLE.</p>
+            <ul><li><strong>id: Integer</strong></li><li><strong>nombre: String</strong></li><li><strong>fechaCreacion: DateTime</strong></li><li><strong>esPublica: Boolean</strong></li></ul>
+            <p><strong>Funcionalidades:</strong> <code>añadirContenido()</code>, <code>eliminarContenido()</code>, <code>exportar()</code>.</p>
+
+            <h4 id="clases-comunicacion">5. Clases de Comunicación</h4>
+             <h5>CHAT</h5>
+             <p><strong>Propósito:</strong> Conversación privada entre dos PERFILES.</p>
+             <ul><li><strong>id: Integer</strong></li><li><strong>fechaCreacion: DateTime</strong></li><li><strong>estaActivo: Boolean</strong></li></ul>
+
+            <h5>MENSAJE</h5>
+             <p><strong>Propósito:</strong> Mensaje individual dentro de un CHAT.</p>
+             <ul><li><strong>id: Integer</strong></li><li><strong>texto: String</strong></li><li><strong>fechaEnvio: DateTime</strong></li><li><strong>leido: Boolean</strong></li></ul>
+
+            <h3 id="relaciones">Relaciones entre Clases (Asociaciones)</h3>
+            <p>Las relaciones definen cómo las clases se conectan. La multiplicidad ("1", "*", "2") indica cuántas instancias se relacionan.</p>
+             <h4>1. Relaciones de Usuario y Perfil:</h4>
+             <ul>
+                 <li>USUARIO posee PERFIL (1 a 1)</li>
+                 <li>PARTICULAR es un USUARIO (Herencia)</li>
+                 <li>EMPRESAPUBLICIDAD es un USUARIO (Herencia)</li>
+                 <li>PERFIL crea ANUNCIO (1 a *)</li>
+                 <li>PERFIL sube OFERTAUSUARIO (1 a *)</li>
+                 <li>PERFIL da LIKE (1 a *)</li>
+                 <li>PERFIL escribe COMENTARIO (1 a *)</li>
+                 <li>PERFIL participa en CHAT (* a 2)</li>
+                 <li>PERFIL crea LISTAFAVORITOS (1 a *)</li>
+             </ul>
+             <h4>2. Relaciones de Contenido y sus Auxiliares:</h4>
+             <ul>
+                <li>ANUNCIO es un CONTENIDOPUBLICABLE (Herencia)</li>
+                <li>OFERTAUSUARIO es un CONTENIDOPUBLICABLE (Herencia)</li>
+                <li>ANUNCIO tiene IMAGEN (1 a *)</li>
+                <li>ANUNCIO pertenece a CATEGORIA (1 a 1)</li>
+                <li>OFERTAUSUARIO pertenece a CATEGORIA (1 a 1)</li>
+                <li>OFERTA_ADMINISTRADOR tiene TIPO_OFERTA_ADMIN (1 a 1)</li>
+             </ul>
+              <h4>3. Relaciones de Interacción con Contenido:</h4>
+             <ul>
+                <li>COMENTARIO sobre CONTENIDOPUBLICABLE (1 a 1)</li>
+                <li>LIKE a CONTENIDOPUBLICABLE (1 a 1)</li>
+                <li>LISTAFAVORITOS contiene CONTENIDOPUBLICABLE (* a *)</li>
+             </ul>
+              <h4>4. Relaciones de Comunicación:</h4>
+             <ul>
+                <li>CHAT contiene MENSAJE (1 a *)</li>
+                <li>MENSAJE enviado por PERFIL (* a 1)</li>
+             </ul>
+        </div>
+
+        <!-- Contenedor ancho para el diagrama -->
+        <div class="uml-diagram-container">
+            <h2 id="esquema-uml" class="uml-diagram-title">Esquema UML</h2>
+             <!-- Imagen del diagrama UML -->
+            <img src="assets/UML.png" alt="Diagrama de Clases UML de Nexus" class="plantuml-diagram-image">
+        </div>
+    </main>
+
+    <footer class="advanced-footer">
+        <div class="footer-grid-container">
+            <div class="footer-section footer-brand">
+                <h3>Nexus.</h3>
+                <p>Deja de buscar, empieza a encontrar.</p>
+            </div>
+            <div class="footer-section footer-links">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="terms.html">Términos de Servicio</a></li>
+                    <li><a href="privacy.html">Política de Privacidad</a></li>
+                </ul>
+            </div>
+            <div class="footer-section footer-social">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="https://x.com/somosnexusapp" target="_blank" title="X (Twitter)"><i class="si si-x"></i></a>
+                    <a href="https://www.instagram.com/somosnexusapp/" target="_blank" title="Instagram"><i class="si si-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@nexusapp?lang=es" target="_blank" title="TikTok"><i class="si si-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Nexus App. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+     <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="animations.js"></script>
+</body>
+</html>
+

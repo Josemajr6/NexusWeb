@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Nexus - Estudio de Viabilidad</title>
-    <meta name="description" content="Análisis del Estudio de Viabilidad de Nexus, cubriendo la viabilidad técnica, económica, operativa y legal del proyecto.">
-    
+    <meta name="description" content="Análisis de la viabilidad técnica, económica, operativa y legal del proyecto Nexus.">
     <link rel="icon" type="image/png" href="assets/logo.png">
     <link rel="stylesheet" href="moreinfo-styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v13/font/simple-icons.min.css">
 
     <meta property="og:title" content="Nexus - Estudio de Viabilidad">
-    <meta property="og:description" content="Análisis de la viabilidad técnica, económica, operativa y legal del proyecto Nexus.">
+    <meta property="og:description" content="Análisis de viabilidad del proyecto Nexus: técnica, económica, operativa y legal.">
     <meta property="og:image" content="https://nexus-app.es/assets/logo.png">
     <meta property="og:url" content="https://nexus-app.es/viability-study.html">
     <meta property="og:type" content="article">
@@ -22,35 +20,79 @@
     <main class="content-wrapper">
         <a href="moreinfo.html" class="back-button">&larr; Volver al menú</a>
 
-        <h1>Estudio de Viabilidad</h1>
-        <p class="project-meta"><strong>Documento por:</strong> Juan José Gamero López</p>
-        <p class="project-meta"><strong>Proyecto:</strong> Nexus</p>
+         <!-- Índice -->
+        <nav class="toc">
+            <h2 class="toc-title">Índice</h2>
+            <ul class="toc-list">
+                <li class="toc-item"><a href="#introduccion" class="toc-link">1. Introducción y Objetivos</a></li>
+                <li class="toc-item"><a href="#alcance" class="toc-link">2. Alcance Preliminar</a></li>
+                <li class="toc-item"><a href="#viabilidad-tecnica" class="toc-link">3. Viabilidad Técnica</a></li>
+                <li class="toc-item"><a href="#viabilidad-economica" class="toc-link">4. Viabilidad Económica</a></li>
+                <li class="toc-item"><a href="#viabilidad-operativa" class="toc-link">5. Viabilidad Operativa</a></li>
+                <li class="toc-item"><a href="#viabilidad-legal" class="toc-link">6. Viabilidad Legal y Normativa</a></li>
+                <li class="toc-item"><a href="#riesgos" class="toc-link">7. Riesgos Iniciales</a></li>
+                <li class="toc-item"><a href="#conclusion" class="toc-link">8. Conclusión y Recomendación</a></li>
+            </ul>
+        </nav>
+
+        <h1>Estudio de Viabilidad: Nexus</h1>
+        <p class="project-meta"><strong>Fecha:</strong> 04/09/2025</p>
 
         <hr>
 
-        <h2>1. Introducción y objetivos</h2>
-        <p>Nexus es una aplicación móvil y web que combina lo mejor de las apps de ofertas y las de segunda mano, ofreciendo una plataforma donde los usuarios pueden descubrir ofertas destacadas, productos de segunda mano y promociones de empresas en un solo lugar. El objetivo principal es crear un espacio interactivo y visualmente atractivo en el que los usuarios puedan buscar productos, publicar anuncios, dar “likes” a las mejores ofertas y disfrutar de un sistema de envíos con comisión (Nexus Go).</p>
+        <h2 id="introduccion">1. Introducción y Objetivos</h2>
+        <p>Nexus es una aplicación móvil y web que combina lo mejor de las plataformas de ofertas y de segunda mano, ofreciendo un espacio donde los usuarios pueden descubrir ofertas destacadas, productos usados y promociones de empresas en un solo lugar.</p>
+        <p>El objetivo principal es crear un espacio interactivo y visualmente atractivo para:</p>
+        <ul>
+            <li>Buscar productos nuevos y usados.</li>
+            <li>Publicar anuncios propios.</li>
+            <li>Interactuar socialmente (likes) para destacar ofertas.</li>
+            <li>Utilizar un sistema de envíos integrado (Nexus Go).</li>
+        </ul>
 
-        <h2>2. Alcance preliminar</h2>
-        <p>El proyecto busca desarrollar una aplicación funcional para Android (y posteriormente iOS) y web con: inicio con ofertas destacadas, apartado de Segunda Mano, sección de Destacados (basada en likes), buscador global, perfiles de usuario y el módulo de envíos Nexus Go.
-        <br><strong>Exclusiones iniciales:</strong> No se incluye integración con pasarelas de pago externas en la primera versión y no se contemplan funcionalidades avanzadas de chat hasta versiones posteriores.</p>
+        <h2 id="alcance">2. Alcance Preliminar</h2>
+        <p>El proyecto busca desarrollar una aplicación funcional para Android (y posteriormente iOS) y Web con:</p>
+        <ul>
+            <li>Inicio con ofertas destacadas y categorías.</li>
+            <li>Apartado de Segunda Mano.</li>
+            <li>Sección de Destacados (basada en likes).</li>
+            <li>Buscador global (nuevos y usados).</li>
+            <li>Perfiles de usuario y gestión de publicaciones.</li>
+            <li>Módulo Nexus Go para envíos con comisión.</li>
+        </ul>
+        <p><strong>Exclusiones iniciales:</strong> No se incluyen pasarelas de pago externas ni funcionalidades avanzadas de chat en la v1.</p>
 
-        <h2>3. Viabilidad técnica</h2>
-        <p><strong>Tecnologías:</strong> Frontend (Angular y Android Studio - Java), Backend (Java Spring Boot, NodeJS y PostgreSQL).</p>
-        <p><strong>Recursos humanos:</strong> Se requiere un equipo de 3 desarrolladores.</p>
+        <h2 id="viabilidad-tecnica">3. Viabilidad Técnica</h2>
+        <ul>
+            <li><strong>Tecnologías:</strong> Frontend (Angular, Android Studio - Java), Backend (Java Spring Boot, NodeJS, PostgreSQL).</li>
+            <li><strong>Compatibilidad:</strong> Dispositivos Android, Web (futuro iOS).</li>
+            <li><strong>Recursos humanos:</strong> Se requiere un equipo de 3 desarrolladores con experiencia en las tecnologías mencionadas.</li>
+        </ul>
 
-        <h2>4. Viabilidad económica</h2>
-        <p><strong>Costes estimados iniciales:</strong> Desarrollo y diseño (6.000–8.000 €), Servidores y almacenamiento (500 €/año), Marketing inicial (1.000 €).</p>
-        <p><strong>Fuentes de financiación:</strong> Fondos propios o microinversores.</p>
-        <p><strong>Análisis costo–beneficio:</strong> La inversión inicial es moderada, con potencial de retorno mediante comisiones por transacciones (Nexus Go) y servicios premium para empresas.</p>
+        <h2 id="viabilidad-economica">4. Viabilidad Económica</h2>
+        <ul>
+            <li><strong>Costes estimados iniciales:</strong> Desarrollo (6k-8k €), Servidores (~500 €/año), Marketing inicial (1k €).</li>
+            <li><strong>Fuentes de financiación:</strong> Fondos propios, microinversores.</li>
+            <li><strong>Monetización futura:</strong> Comisiones por Nexus Go, publicidad destacada para empresas.</li>
+            <li><strong>Análisis costo-beneficio:</strong> Inversión inicial moderada con potencial de retorno a medio plazo si se consigue tracción de usuarios.</li>
+        </ul>
 
-        <h2>5. Viabilidad operativa</h2>
-        <p>Los usuarios dispondrán de una experiencia simple y moderna con incentivos sociales (likes). Las empresas podrán promocionar productos mediante anuncios pagados. Se requerirá un panel de administración para controlar publicaciones y reportes.</p>
+        <h2 id="viabilidad-operativa">5. Viabilidad Operativa</h2>
+        <ul>
+            <li><strong>Impacto en usuarios:</strong> Experiencia simple, moderna, con incentivos sociales.</li>
+            <li><strong>Impacto en empresas:</strong> Canal para promocionar productos.</li>
+            <li><strong>Procesos internos:</strong> Se necesitará un panel de administración para gestión de contenido y usuarios.</li>
+        </ul>
 
-        <h2>6. Viabilidad legal y normativa</h2>
-        <p>Se debe asegurar el cumplimiento del Reglamento General de Protección de Datos (RGPD), tener Términos y Condiciones claros, y sistemas de verificación de identidad y protección de propiedad intelectual.</p>
+        <h2 id="viabilidad-legal">6. Viabilidad Legal y Normativa</h2>
+        <ul>
+            <li>Cumplimiento estricto del RGPD.</li>
+            <li>Términos y condiciones claros.</li>
+            <li>Posible verificación de identidad para vendedores de segunda mano.</li>
+            <li>Protección de propiedad intelectual.</li>
+        </ul>
 
-        <h2>7. Riesgos iniciales</h2>
+        <h2 id="riesgos">7. Riesgos Iniciales</h2>
         <table>
             <thead>
                 <tr>
@@ -62,29 +104,31 @@
             <tbody>
                 <tr>
                     <td>Competencia alta</td>
-                    <td>Existen apps similares de ofertas y segunda mano</td>
-                    <td>Diferenciarse por integración de ambas funciones y sistema de likes</td>
+                    <td>Existen apps similares consolidadas</td>
+                    <td>Diferenciación por integración de funciones y sistema de likes</td>
                 </tr>
                 <tr>
                     <td>Falta de usuarios iniciales</td>
-                    <td>Riesgo de baja adopción al principio</td>
-                    <td>Campañas de lanzamiento y bonificaciones por registros</td>
+                    <td>Baja adopción al principio (problema huevo/gallina)</td>
+                    <td>Campañas de lanzamiento, bonificaciones, enfoque local inicial</td>
                 </tr>
                 <tr>
                     <td>Publicaciones fraudulentas</td>
-                    <td>Riesgo de productos falsos o estafas</td>
-                    <td>Moderación y verificación con IA y reportes de usuarios</td>
+                    <td>Riesgo de estafas en segunda mano</td>
+                    <td>Moderación (IA y manual), sistema de reportes y valoraciones</td>
                 </tr>
                 <tr>
                     <td>Costes operativos</td>
-                    <td>Mantenimiento de servidores y comisiones</td>
-                    <td>Escalado progresivo según número de usuarios</td>
+                    <td>Mantenimiento de infraestructura</td>
+                    <td>Escalado progresivo de servidores según la base de usuarios</td>
                 </tr>
             </tbody>
         </table>
 
-        <h2>8. Conclusión y recomendación</h2>
-        <p>El proyecto Nexus es viable técnica y económicamente, con un enfoque innovador. Se recomienda continuar con el desarrollo del prototipo funcional y realizar una prueba piloto para validar la aceptación del mercado.</p>
+        <h2 id="conclusion">8. Conclusión y Recomendación</h2>
+        <p>El proyecto Nexus presenta una propuesta de valor interesante al unificar dos mercados complementarios. Es viable desde el punto de vista técnico y económico, siempre que se gestione eficientemente el desarrollo y se implemente una estrategia de captación de usuarios inicial efectiva.</p>
+        <p><strong>Se recomienda:</strong> Continuar con el desarrollo de un prototipo funcional (MVP) y realizar una prueba piloto en un mercado local limitado para validar la aceptación y ajustar la estrategia antes de un lanzamiento a mayor escala.</p>
+
     </main>
 
     <footer class="advanced-footer">
@@ -96,16 +140,16 @@
             <div class="footer-section footer-links">
                 <h3>Legal</h3>
                 <ul>
-                    <li><a href="#">Términos de Servicio</a></li>
-                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="terms.html">Términos de Servicio</a></li>
+                    <li><a href="privacy.html">Política de Privacidad</a></li>
                 </ul>
             </div>
             <div class="footer-section footer-social">
                 <h3>Síguenos</h3>
                 <div class="social-icons">
-                    <a href="https://x.com/somosnexusapp" title="X (Twitter)" target="_blank"><i class="si si-x"></i></a>
-                    <a href="https://www.instagram.com/somosnexusapp/" title="Instagram" target="_blank"><i class="si si-instagram"></i></a>
-                    <a href="https://www.tiktok.com/@nexusapp?lang=es" title="TikTok" target="_blank"><i class="si si-tiktok"></i></a>
+                    <a href="https://x.com/somosnexusapp" target="_blank" title="X (Twitter)"><i class="si si-x"></i></a>
+                    <a href="https://www.instagram.com/somosnexusapp/" target="_blank" title="Instagram"><i class="si si-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@nexusapp?lang=es" target="_blank" title="TikTok"><i class="si si-tiktok"></i></a>
                 </div>
             </div>
         </div>
@@ -113,7 +157,9 @@
             <p>&copy; 2025 Nexus App. Todos los derechos reservados.</p>
         </div>
     </footer>
-
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="animations.js"></script>
 </body>
 </html>
 
