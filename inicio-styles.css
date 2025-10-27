@@ -105,6 +105,7 @@ main {
 
 .info-button:hover {
     background-color: rgba(255, 255, 255, 0.2);
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="5" fill="%23A8C7FA" opacity="0.8"/><path d="M10 0 L12 8 L8 8 Z" fill="%23A8C7FA"/></svg>') 10 0, pointer;
     transform: translateY(-3px);
 }
 
