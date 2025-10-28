@@ -5,7 +5,7 @@ body {
     min-height: 100vh;
     margin: 0;
     font-family: Arial, system-ui, sans-serif; /* Fuente Arial como base */
-    background-color: #1F1F1F;
+    background-color: #111111;
     color: #E0E0E0;
     line-height: 1.6;
     overflow-x: hidden !important; /* FORZAR eliminación de scroll horizontal */
