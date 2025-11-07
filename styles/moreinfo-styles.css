@@ -79,6 +79,26 @@ main {
     .menu-options {
         grid-template-columns: repeat(2, 1fr);
     }
+    
+    /* NUEVO ESTILO PARA EL BOTÓN DESTACADO */
+    .menu-button-full-width {
+        grid-column: 1 / -1; /* Ocupa todo el ancho de la rejilla */
+        text-align: center; /* Centra el texto */
+        border-color: #A8C7FA; /* Borde destacado */
+        background-color: #333; /* Fondo ligeramente más claro */
+    }
+    
+    .menu-button-full-width:hover {
+        border-color: #C6A7FC;
+    }
+
+    /* Estilo para que el h2 dentro del botón destacado también tenga el gradiente */
+    .menu-button-full-width h2 {
+        background: linear-gradient(135deg, #A8C7FA, #C6A7FC);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block; /* Necesario para que el gradiente se aplique correctamente */
+    }
 }
 .menu-button {
     background-color: #2a2a2a;
@@ -103,6 +123,8 @@ main {
 .menu-options a:nth-child(2) { animation-delay: 0.4s; }
 .menu-options a:nth-child(3) { animation-delay: 0.5s; }
 .menu-options a:nth-child(4) { animation-delay: 0.6s; }
+/* Añadido delay para el nuevo botón */
+.menu-options a:nth-child(5) { animation-delay: 0.7s; }
 
 
 /* --- Estilos PÁGINAS DE DOCUMENTACIÓN (General) --- */
@@ -125,6 +147,22 @@ main {
 .content-wrapper h3, .uml-documentation h3 { font-size: 1.8rem; animation-delay: 0.4s; }
 .uml-documentation h4 { font-size: 1.6rem; border-left: 3px solid #C6A7FC; padding-left: 0.8rem; background: none; -webkit-background-clip: unset; -webkit-text-fill-color: unset; color: #A8C7FA; margin-top: 2.5rem; border-bottom: none; padding-bottom: 0; animation-delay: 0.5s; }
 .uml-documentation h5 { font-size: 1.3rem; background: none; -webkit-background-clip: unset; -webkit-text-fill-color: unset; color: #C6A7FC; margin-top: 2rem; border-bottom: none; padding-bottom: 0; animation-delay: 0.6s; }
+
+/* NUEVO ESTILO para subtítulos en páginas de contenido (como mockup.html) */
+.section-title {
+    font-size: 2rem; /* Ligeramente más pequeño que h1 */
+    font-weight: 700;
+    text-align: center;
+    background: linear-gradient(135deg, #A8C7FA, #C6A7FC);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding-bottom: 0.6rem;
+    margin-top: 4rem; /* Más espacio arriba */
+    margin-bottom: 2rem; /* Espacio antes del iframe */
+    opacity: 0; /* Para animación */
+    animation: pop-in-bouncy 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.3s;
+}
 
 .content-wrapper p, .content-wrapper li { color: #B0B0B0; margin-bottom: 1rem; }
 .content-wrapper ul { padding-left: 25px; list-style: disc; margin-bottom: 1.5rem; }
@@ -332,6 +370,10 @@ th { color: #A8C7FA; font-size: 1.1rem; }
     .content-wrapper h3, .uml-documentation h3 { font-size: 1.6rem; }
     .uml-documentation h4 { font-size: 1.4rem; }
     .uml-documentation h5 { font-size: 1.2rem; }
+    
+    /* Títulos de sección en móvil */
+    .section-title { font-size: 1.8rem; margin-top: 2.5rem; }
+
     .project-meta { font-size: 0.8rem; }
     .toc { padding: 1.5rem; margin-bottom: 2rem; }
     .toc-title { font-size: 1.8rem; margin-bottom: 1rem; padding-bottom: 0.8rem; }
@@ -345,6 +387,12 @@ th { color: #A8C7FA; font-size: 1.1rem; }
     .menu-button { padding: 1rem; }
     .menu-button h2 { font-size: 1.3rem; }
     .menu-button p { font-size: 0.9rem; }
+    
+    /* Botón destacado en móvil (ocupa 1 columna) */
+    .menu-button-full-width { text-align: left; }
+    .menu-button-full-width h2 { background: none; -webkit-background-clip: unset; -webkit-text-fill-color: unset; display: block; }
+
+
     .back-button { margin-top: 0.5rem; font-size: 0.9rem; }
     hr { margin: 2rem 0; }
     table { font-size: 0.9rem; }
@@ -381,6 +429,7 @@ th { color: #A8C7FA; font-size: 1.1rem; }
     body { font-size: 0.9rem; }
     .content-wrapper h1 { font-size: 2rem; }
     .content-wrapper h2 { font-size: 1.6rem; }
+    .section-title { font-size: 1.6rem; }
     .menu-container h1 { font-size: 2rem; }
     .menu-subtitle { font-size: 0.9rem; }
     .menu-button h2 { font-size: 1.2rem; }
@@ -390,3 +439,30 @@ th { color: #A8C7FA; font-size: 1.1rem; }
     .uml-diagram-container { padding: 1rem 0.5rem; margin: 1rem auto; }
 }
 
+
+/* --- ESTILOS PARA EL MOCKUP (FIGMA) --- */
+
+.figma-embed-container {
+    position: relative;
+    width: 100%;
+    /* 16:9 Aspect Ratio (450 / 800 = 0.5625) */
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid #333;
+    margin: 2rem auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    /* Animación */
+    opacity: 0;
+    animation: pop-in-bouncy 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.5s;
+}
+
+.figma-embed-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
