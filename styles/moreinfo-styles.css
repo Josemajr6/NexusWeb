@@ -130,20 +130,9 @@ main {
 /* --- Estilos PÁGINAS DE DOCUMENTACIÓN (General) --- */
 .content-wrapper { max-width: 800px; margin: 0 auto; padding-top: 0; }
 
-/* NUEVA CLASE AÑADIDA PARA MOCKUP.HTML */
-.content-wrapper-full-width {
-    max-width: 1200px; /* Más ancho que el wrapper estándar */
-    margin: 0 auto;
-    padding-top: 0;
-    padding-left: 1rem; /* Añadir padding lateral para que no pegue en bordes */
-    padding-right: 1rem;
-    box-sizing: border-box; /* Asegurar que el padding se incluya */
-}
-
+/* SE HA ELIMINADO LA CLASE .content-wrapper-full-width */
 
 .content-wrapper h1, .content-wrapper h2, .content-wrapper h3,
-.content-wrapper-full-width h1, /* Aplicar estilos de H1 a la nueva clase */
-.content-wrapper-full-width h2, /* Aplicar estilos de H2 a la nueva clase */
 .uml-documentation h3, .uml-documentation h4, .uml-documentation h5 {
     background: linear-gradient(135deg, #A8C7FA, #C6A7FC);
     -webkit-background-clip: text;
@@ -156,8 +145,8 @@ main {
     opacity: 0; /* Para animación CSS */
     animation: pop-in-bouncy 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
-.content-wrapper h1, .content-wrapper-full-width h1 { text-align: center; font-size: 3rem; width: 100%; margin-top: 0; animation-delay: 0.2s; }
-.content-wrapper h2, .content-wrapper-full-width h2 { font-size: 2.2rem; animation-delay: 0.3s; }
+.content-wrapper h1 { text-align: center; font-size: 3rem; width: 100%; margin-top: 0; animation-delay: 0.2s; }
+.content-wrapper h2 { font-size: 2.2rem; animation-delay: 0.3s; }
 .content-wrapper h3, .uml-documentation h3 { font-size: 1.8rem; animation-delay: 0.4s; }
 .uml-documentation h4 { font-size: 1.6rem; border-left: 3px solid #C6A7FC; padding-left: 0.8rem; background: none; -webkit-background-clip: unset; -webkit-text-fill-color: unset; color: #A8C7FA; margin-top: 2.5rem; border-bottom: none; padding-bottom: 0; animation-delay: 0.5s; }
 .uml-documentation h5 { font-size: 1.3rem; background: none; -webkit-background-clip: unset; -webkit-text-fill-color: unset; color: #C6A7FC; margin-top: 2rem; border-bottom: none; padding-bottom: 0; animation-delay: 0.6s; }
@@ -178,33 +167,11 @@ main {
     animation: pop-in-bouncy 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.3s;
 }
 
-.content-wrapper p, .content-wrapper li,
-.content-wrapper-full-width p, .content-wrapper-full-width li { /* Aplicar a nueva clase */
-    color: #B0B0B0; 
-    margin-bottom: 1rem; 
-}
-.content-wrapper ul,
-.content-wrapper-full-width ul { /* Aplicar a nueva clase */
-    padding-left: 25px; 
-    list-style: disc; 
-    margin-bottom: 1.5rem; 
-}
-.content-wrapper li,
-.content-wrapper-full-width li { margin-bottom: 0.5rem; } /* Aplicar a nueva clase */
-
-.content-wrapper strong,
-.content-wrapper-full-width strong { color: #E0E0E0; font-weight: 600; } /* Aplicar a nueva clase */
-
-.content-wrapper code, .content-wrapper em,
-.content-wrapper-full-width code, .content-wrapper-full-width em { /* Aplicar a nueva clase */
-    color: #8be9fd; 
-    font-style: normal; 
-    font-family: 'Courier New', Courier, monospace; 
-    background-color: #3a3a3a; 
-    padding: 0.2em 0.5em; 
-    border-radius: 4px; 
-    font-size: 0.9em; 
-}
+.content-wrapper p, .content-wrapper li { color: #B0B0B0; margin-bottom: 1rem; }
+.content-wrapper ul { padding-left: 25px; list-style: disc; margin-bottom: 1.5rem; }
+.content-wrapper li { margin-bottom: 0.5rem; }
+.content-wrapper strong { color: #E0E0E0; font-weight: 600; }
+.content-wrapper code, .content-wrapper em { color: #8be9fd; font-style: normal; font-family: 'Courier New', Courier, monospace; background-color: #3a3a3a; padding: 0.2em 0.5em; border-radius: 4px; font-size: 0.9em; }
 
 /* Estilos Índice */
 .toc { background-color: #2a2a2a; border: 1px solid #444; border-radius: 12px; padding: 2.5rem; margin-bottom: 4rem; margin-top: 1.5rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); opacity: 0; animation: pop-in-bouncy 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.25s; }
@@ -400,9 +367,9 @@ th { color: #A8C7FA; font-size: 1.1rem; }
 @media (max-width: 767px) {
     body { font-size: 0.95rem; }
     main { padding: 1rem; }
-    .content-wrapper, .content-wrapper-full-width { padding: 0 0.5rem; } /* Aplicar a ambas clases */
-    .content-wrapper h1, .content-wrapper-full-width h1 { font-size: 2.2rem; } /* Aplicar a ambas clases */
-    .content-wrapper h2, .content-wrapper-full-width h2 { font-size: 1.8rem; } /* Aplicar a ambas clases */
+    .content-wrapper { padding: 0 0.5rem; }
+    .content-wrapper h1 { font-size: 2.2rem; }
+    .content-wrapper h2 { font-size: 1.8rem; }
     .content-wrapper h3, .uml-documentation h3 { font-size: 1.6rem; }
     .uml-documentation h4 { font-size: 1.4rem; }
     .uml-documentation h5 { font-size: 1.2rem; }
@@ -463,8 +430,8 @@ th { color: #A8C7FA; font-size: 1.1rem; }
 /* Media Query específica para iPhone SE / pequeños */
 @media (max-width: 375px) {
     body { font-size: 0.9rem; }
-    .content-wrapper h1, .content-wrapper-full-width h1 { font-size: 2rem; } /* Aplicar a ambas clases */
-    .content-wrapper h2, .content-wrapper-full-width h2 { font-size: 1.6rem; } /* Aplicar a ambas clases */
+    .content-wrapper h1 { font-size: 2rem; }
+    .content-wrapper h2 { font-size: 1.6rem; }
     .section-title { font-size: 1.6rem; }
     .menu-container h1 { font-size: 2rem; }
     .menu-subtitle { font-size: 0.9rem; }
@@ -481,8 +448,8 @@ th { color: #A8C7FA; font-size: 1.1rem; }
 .figma-embed-container {
     position: relative;
     width: 100%;
-    /* ACTUALIZADO: Taller que 16:9. (alto / ancho = 0.65) */
-    padding-bottom: 65%;
+    /* 16:9 Aspect Ratio (450 / 800 = 0.5625) - REVERTIDO A 16:9 */
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
     border-radius: 12px;
