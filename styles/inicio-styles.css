@@ -1,22 +1,32 @@
 /* --- Estilos Generales y compartidos --- */
+* {
+    box-sizing: border-box; /* Asegura que padding y border no afecten el ancho total */
+}
+
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
     font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #111111;
     color: #E0E0E0;
     line-height: 1.6;
-    overflow-x: hidden; /* Evita scroll horizontal */
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23A8C7FA"><circle cx="8" cy="8" r="4"/></svg>'), auto;
+    
+    /* --- MEJORA VISUAL: Fondo animado --- */
+    background-color: #111111;
+    background-image: radial-gradient(circle at 20% 20%, rgba(168, 199, 250, 0.1) 0%, rgba(168, 199, 250, 0) 25%),
+                      radial-gradient(circle at 80% 70%, rgba(198, 167, 252, 0.1) 0%, rgba(198, 167, 252, 0) 25%);
+    background-size: 200% 200%;
+    animation: animated-gradient 20s ease-in-out infinite;
 }
 
 /* --- ESTILOS PARA LA PÁGINA DE INICIO FIJA Y SIN SCROLL --- */
 body.no-scroll {
     height: 100vh;
-    overflow: hidden;
+    overflow: hidden; /* Esto está bien para la landing page */
 }
+
 /* --------------------------------------------------------- */
 
 main {
@@ -24,6 +34,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1rem; /* Añadido padding para móviles */
 }
 
 /* --- Estilos para la Página de Inicio (index.html) --- */
@@ -33,8 +44,8 @@ main {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 2rem;
-    box-sizing: border-box;
+    padding: 1rem; /* Ajustado para móviles */
+    width: 100%; /* Asegura que no se desborde */
 }
 
 .slogan-container h1 {
@@ -44,6 +55,7 @@ main {
     background: linear-gradient(135deg, #A8C7FA, #C6A7FC);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    word-break: break-word; /* Evita desbordamiento en palabras largas */
 }
 
 .slogan-container p {
@@ -56,10 +68,19 @@ main {
 /* Contenedor para los botones */
 .buttons-container {
     display: flex;
+    flex-direction: column; /* Cambiado a columna para móviles */
     justify-content: center;
     align-items: center;
     gap: 1.5rem; /* Espacio entre botones */
     margin-top: 3.5rem; /* Espacio desde el párrafo */
+    width: 100%;
+}
+
+/* Media query para pantallas más grandes (tablets y escritorio) */
+@media (min-width: 768px) {
+    .buttons-container {
+        flex-direction: row; /* Vuelve a fila en escritorio */
+    }
 }
 
 .info-button, .demo-button {
@@ -74,7 +95,16 @@ main {
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
+    width: 100%; /* Ocupa el ancho en móvil */
+    max-width: 320px; /* Un ancho máximo */
 }
+
+@media (min-width: 768px) {
+    .info-button, .demo-button {
+        width: auto; /* Ancho automático en escritorio */
+    }
+}
+
 
 /* Estilo principal para el botón de demo */
 .demo-button {
@@ -83,11 +113,15 @@ main {
     font-weight: 700;
     border: none;
     box-shadow: 0 4px 15px rgba(168, 199, 250, 0.3);
+    
+    /* --- MEJORA VISUAL: Animación de brillo --- */
+    animation: pulse-glow 2.5s infinite ease-in-out;
 }
 
 .demo-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(168, 199, 250, 0.5);
+    animation-play-state: paused; /* Pausa el brillo al pasar el ratón */
 }
 
 .info-button::before {
@@ -100,18 +134,19 @@ main {
     background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.15), transparent);
     transform: skewX(-25deg);
     animation: shimmer 5s infinite linear;
-    animation-delay: 2s; /* El brillo aparece tras 2 segundos */
+    animation-delay: 2s; 
 }
 
 .info-button:hover {
     background-color: rgba(255, 255, 255, 0.2);
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="5" fill="%23A8C7FA" opacity="0.8"/><path d="M10 0 L12 8 L8 8 Z" fill="%23A8C7FA"/></svg>') 10 0, pointer;
-    transform: translateY(-3px);
+    transform: translateY(-3px) scale(1.02); /* Efecto "lift" */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* --- Estilos para la sección de plataformas --- */
 .platforms {
-    margin-top: 3.5rem; /* Margen para separar del botón */
+    margin-top: 3.5rem; 
     opacity: 0;
     animation: fadeInPlatforms 1s ease-out 1s forwards;
 }
@@ -127,7 +162,14 @@ main {
 .platforms-icons {
     display: flex;
     justify-content: center;
-    gap: 3rem;
+    gap: 2rem; /* Reducido el gap para móviles */
+    flex-wrap: wrap; /* Permite que los iconos bajen si no caben */
+}
+
+@media (min-width: 768px) {
+    .platforms-icons {
+        gap: 3rem; /* Vuelve al gap original en escritorio */
+    }
 }
 
 .platform-icon {
@@ -139,14 +181,14 @@ main {
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
+/* --- MEJORA VISUAL: Hover en iconos --- */
 .platform-icon:hover {
-    color: #E0E0E0;
-    transform: translateY(-5px);
+    color: #fff;
+    transform: scale(1.1) translateY(-5px);
 }
 
-/* Estilos para los iconos de Simple Icons */
 .platform-icon .si {
-    font-size: 32px; /* Controla el tamaño del icono */
+    font-size: 32px; 
 }
 
 .platform-icon span {
@@ -157,7 +199,7 @@ main {
 /* --- Estilos para el Pie de Página (Footer) --- */
 footer {
     width: 100%;
-    padding: 15px 0;
+    padding: 15px 1rem; /* Añadido padding lateral */
     background-color: #111;
     text-align: center;
     font-size: 0.9rem;
@@ -168,22 +210,24 @@ footer {
 
 /* --- Keyframes para animaciones --- */
 @keyframes shimmer {
-    from {
-        left: -100%;
-    }
-    to {
-        left: 100%;
-    }
+    from { left: -100%; }
+    to { left: 100%; }
 }
 
 @keyframes fadeInPlatforms {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
+/* --- MEJORA VISUAL: Keyframes para fondo y brillo --- */
+@keyframes animated-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse-glow {
+    0% { box-shadow: 0 4px 15px rgba(168, 199, 250, 0.3); }
+    50% { box-shadow: 0 4px 25px rgba(198, 167, 252, 0.5); }
+    100% { box-shadow: 0 4px 15px rgba(168, 199, 250, 0.3); }
+}
