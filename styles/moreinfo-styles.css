@@ -130,8 +130,6 @@ main {
 /* --- Estilos PÁGINAS DE DOCUMENTACIÓN (General) --- */
 .content-wrapper { max-width: 800px; margin: 0 auto; padding-top: 0; }
 
-/* SE HA ELIMINADO LA CLASE .content-wrapper-full-width */
-
 .content-wrapper h1, .content-wrapper h2, .content-wrapper h3,
 .uml-documentation h3, .uml-documentation h4, .uml-documentation h5 {
     background: linear-gradient(135deg, #A8C7FA, #C6A7FC);
@@ -168,7 +166,7 @@ main {
 }
 
 .content-wrapper p, .content-wrapper li { color: #B0B0B0; margin-bottom: 1rem; }
-.content-wrapper ul { padding-left: 25px; list-style: disc; margin-bottom: 1.5rem; }
+.content-wrapper ul { padding-left: 25px; list-style: none; margin-bottom: 1.5rem; }
 .content-wrapper li { margin-bottom: 0.5rem; }
 .content-wrapper strong { color: #E0E0E0; font-weight: 600; }
 .content-wrapper code, .content-wrapper em { color: #8be9fd; font-style: normal; font-family: 'Courier New', Courier, monospace; background-color: #3a3a3a; padding: 0.2em 0.5em; border-radius: 4px; font-size: 0.9em; }
@@ -468,4 +466,76 @@ th { color: #A8C7FA; font-size: 1.1rem; }
     width: 100%;
     height: 100%;
     border: 0;
+}
+
+/* --- ESTILOS PARA LA LISTA DE INTERACCIONES --- */
+
+.interactive-features {
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin: -1rem auto 2rem auto; /* Margen negativo arriba para acercarlo al título */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    animation: pop-in-bouncy 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.4s; /* Delay para que aparezca después del título */
+}
+
+.interactive-features h3 {
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.5rem;
+    font-size: 1.3rem;
+    color: #E0E0E0;
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    border-bottom: 1px solid #555;
+    text-align: left;
+}
+
+.features-list {
+    list-style: none; /* <-- Esto quita los puntos */
+    padding-left: 0;
+    margin: 0;
+    /* Añado un display grid para mejor formato en desktop */
+    display: grid;
+    grid-template-columns: 1fr; /* Una columna por defecto */
+    gap: 0.8rem 1.5rem; /* Espacio entre filas y columnas */
+}
+
+/* En pantallas más anchas, lo pongo en 2 columnas */
+@media (min-width: 768px) {
+    .features-list {
+        /* Acomoda los 3 elementos en 2 columnas (el último ocupará el ancho) */
+         grid-template-columns: 1fr 1fr;
+    }
+    /* Hago que el último item ocupe las dos columnas si es impar */
+    .features-list li:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+    }
+}
+
+.features-list li {
+    position: relative;
+    padding-left: 2rem; /* Más espacio para el tick */
+    margin-bottom: 0; /* El grid ya gestiona el gap */
+    color: #B0B0B0;
+    font-size: 1rem;
+    line-height: 1.5; /* Mejor espaciado vertical */
+}
+
+.features-list li::before {
+    content: '✓'; /* <-- Este es el tick */
+    position: absolute;
+    left: 0;
+    top: 0px; /* Ajuste fino de alineación vertical */
+    color: #A8C7FA; /* Color del gradiente */
+    font-weight: bold;
+    font-size: 1.2rem; /* Un poco más grande */
+}
+
+/* Añado estilo para el <strong> dentro del <li> */
+.features-list li strong {
+    color: #E0E0E0;
+    font-weight: 600;
 }
