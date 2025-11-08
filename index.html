@@ -5,16 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexus - Inicio</title>
     <meta name="description" content="Nexus: La app definitiva para ahorrar encontrando ofertas de productos nuevos y de segunda mano en un solo lugar. ¡Deja de buscar, empieza a encontrar!">
-    <link rel="icon" type="image/png" href="assets/logo.png">
-    <link rel="stylesheet" href="styles/inicio-styles.css">
-    <!-- Simple Icons CSS -->
+    <meta name="keywords" content="Nexus, app, ofertas, segunda mano, ahorrar, buscar, encontrar, Android, iOS, app de ahorro, figma, mockup">
+    <link rel="canonical" href="https://nexus-app.es/">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/logo.png">
+    <link rel="icon" type="image/png" href="assets/logo.png"> <link rel="stylesheet" href="styles/inicio-styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v13/font/simple-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <meta property="og:title" content="Nexus: App de Ahorro para Ofertas y Segunda Mano">
     <meta property="og:description" content="Descubre Nexus, la plataforma que une ofertas de productos nuevos y de segunda mano. Deja de buscar, empieza a encontrar.">
     <meta property="og:image" content="https://nexus-app.es/assets/logo.png">
     <meta property="og:url" content="https://nexus-app.es">
     <meta property="og:type" content="website">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Nexus",
+      "headline": "Nexus - Deja de buscar, empieza a encontrar.",
+      "description": "Nexus: La app definitiva para ahorrar encontrando ofertas de productos nuevos y de segunda mano en un solo lugar.",
+      "url": "https://nexus-app.es",
+      "applicationCategory": "ShoppingApplication",
+      "operatingSystem": ["Android", "iOS", "Web"],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "image": "https://nexus-app.es/assets/logo.png"
+    }
+    </script>
     
 </head>
 <body class="no-scroll">
@@ -23,9 +47,21 @@
         <div class="slogan-container">
             <h1>Nexus.</h1>
             <p>Deja de buscar, empieza a encontrar.</p>
-            <br><br>
-            <a href="moreinfo.html" class="info-button">Más información</a>
-
+            
+            <div class="buttons-container">
+                <a href="docs/mockup.html" class="info-button">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                    <span>Ver Mockup (Figma)</span>
+                </a>
+                <a href="docs/document-uml.html" class="info-button">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>Ver Diagrama UML</span>
+                </a>
+                <a href="moreinfo.html" class="demo-button">
+                    <i class="fa-solid fa-rocket"></i>
+                    <span>Más información</span>
+                </a>
+            </div>
             <div class="platforms">
                 <h3>Próximamente disponible en</h3>
                 <div class="platforms-icons">
@@ -50,11 +86,9 @@
         <p>&copy; 2025 Nexus App. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- GSAP para animación -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="script/script.js"></script>
     <script src="script/animations.js"></script> 
 
 </body>
 </html>
-

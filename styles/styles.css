@@ -98,10 +98,11 @@ main {
     }
 
     .menu-button-full-width h2 {
+        /* Corrección de error de padding-right que estaba aquí */
         background: linear-gradient(135deg, #A8C7FA, #C6A7FC);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        display: inline-block; 
+        display: inline-block;
     }
 }
 
@@ -112,6 +113,7 @@ main {
 .menu-options a:nth-child(3) { animation-delay: 0.5s; }
 .menu-options a:nth-child(4) { animation-delay: 0.6s; }
 .menu-options a:nth-child(5) { animation-delay: 0.7s; }
+
 
 
 /* --- Estilos PÁGINAS DE DOCUMENTACIÓN (General) --- */
@@ -522,6 +524,14 @@ th { color: #A8C7FA; font-size: 1.1rem; }
     .footer-section.footer-social .social-icons { gap: 1rem; }
     .social-icons .si { font-size: 20px; }
     .footer-bottom { padding-top: 0.8rem; margin-top: 1rem; font-size: 0.75rem; }
+
+    /* Esta regla estaba duplicada, la he dejado pero la que está al final es la que funciona */
+    .highlight-tag {
+        top: 0.75rem;
+        right: 0.75rem;
+        padding: 3px 8px;
+        font-size: 0.7rem;
+    }
 }
 
 /* Media Query específica para iPhone SE / pequeños */
@@ -661,3 +671,131 @@ th { color: #A8C7FA; font-size: 1.1rem; }
     transform: translateY(0);
   }
 }
+
+@keyframes pop-in-tag {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- NUEVO: Banner de Descripción (moreinfo.html) --- */
+.nexus-description-banner {
+    width: 100%; /* Ocupa el ancho del .menu-container */
+    padding: 1.5rem 2rem;
+    margin: 2rem 0 3rem 0; /* Espacio arriba y abajo */
+    
+    /* Fondo sutil (casi transparente, pero no glass) */
+    background-color: rgba(30, 30, 30, 0.5); 
+    
+    /* El borde izquierdo es la clave */
+    border-left: 5px solid;
+    border-image: linear-gradient(180deg, #A8C7FA, #C6A7FC) 1; /* Gradiente vertical en el borde */
+    border-image-slice: 1;
+    
+    border-radius: 0 8px 8px 0; /* Redondeo solo en la derecha, para que el borde izquierdo sea nítido */
+    
+    /* Animación de entrada (reutilizada de las tuyas) */
+    opacity: 0;
+    animation: pop-in-bouncy 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.2s;
+    
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nexus-description-banner:hover {
+    transform: translateX(5px); /* Sutil movimiento al pasar el ratón */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); /* Sombra suave */
+}
+
+.nexus-description-banner h2 {
+    /* Anulamos los estilos de h1, h2 (gradiente, borde) */
+    background: linear-gradient(135deg, #A8C7FA, #C6A7FC);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0 0 0.75rem 0;
+    font-size: 1.5rem;
+    text-align: left;
+    animation: none; /* Quitamos la animación de flujo de gradiente */
+    /* Aseguramos que la opacidad sea 1 (por si acaso) */
+    opacity: 1; 
+}
+
+.nexus-description-banner p {
+    margin: 0;
+    color: #E0E0E0; /* Texto más brillante que el B0B0B0 normal */
+    font-size: 1.1rem;
+    line-height: 1.7;
+    text-align: left;
+}
+
+
+/* === INICIO DE CORRECCIÓN RESPONSIVE PARA ETIQUETA === */
+
+@media (max-width: 767px) {
+  
+  /* 1. Mueve la etiqueta "Destacado" para alinearla con el padding de 1rem del botón en móvil */
+  .highlight-tag {
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.7rem;
+    padding: 3px 8px;
+  }
+
+  /* 2. Añade padding al H2 para que el texto no se ponga debajo de la etiqueta */
+  .menu-button-full-width h2 {
+    padding-right: 90px; /* Espacio para la etiqueta "Destacado" */
+  }
+  
+}
+
+/* === INICIO DE ESTILOS PARA NOTIFICACIÓN DE FORMULARIO === */
+
+#notification-container {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    overflow: hidden;
+}
+
+.nexus-toast {
+    /* Estilo Glassmorphism (basado en .menu-button) */
+    border: 1px solid rgba(168, 199, 250, 0.5); /* Borde de marca */
+    background-color: rgba(42, 42, 42, 0.7); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); 
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    
+    color: #E0E0E0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    
+    /* Animación de entrada y salida */
+    opacity: 0;
+    transform: translateX(110%);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nexus-toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Estilo para notificaciones de error */
+.nexus-toast.error {
+    border-color: rgba(255, 100, 100, 0.7);
+    color: #FFDADA;
+}
+
+/* === FIN DE ESTILOS PARA NOTIFICACIÓN === */

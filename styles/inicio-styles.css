@@ -304,3 +304,23 @@ footer p {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+.info-button,
+.demo-button {
+    /* Usamos flex para alinear el icono y el texto */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; /* Centra el contenido en móvil (width: 100%) */
+    gap: 0.75rem; /* Espacio entre icono y texto */
+    
+    /* Aseguramos que el ancho no se rompa */
+    box-sizing: border-box; 
+}
+
+.info-button i,
+.demo-button i {
+    /* Ajusta el tamaño del icono ligeramente */
+    font-size: 1.1em;
+    /* Evita que el icono encoja */
+    flex-shrink: 0;
+}
