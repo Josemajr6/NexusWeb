@@ -41,7 +41,7 @@ a, button, input[type="submit"], input[type="button"], select,
 main {
     flex-grow: 1;
     /* --- MEJORA MÁRGENES MÓVIL (CORREGIDO) --- */
-    padding: 1rem 1.5rem; /* Padding lateral en móvil */
+    padding: 1rem 2rem; /* Padding lateral en móvil (CORREGIDO) */
     width: 100%; 
 }
 
@@ -354,7 +354,7 @@ th { color: #A8C7FA; font-size: 1.1rem; }
 @media (max-width: 767px) {
     body { font-size: 0.95rem; }
     
-    /* El padding de 'main' (1rem 1.5rem) ya maneja los márgenes en móvil */
+    /* El padding de 'main' (1rem 2rem) ya maneja los márgenes en móvil */
     
     .content-wrapper h1 { font-size: 2.2rem; }
     .content-wrapper h2 { font-size: 1.8rem; }
@@ -398,7 +398,7 @@ th { color: #A8C7FA; font-size: 1.1rem; }
 /* Media Query específica para iPhone SE / pequeños */
 @media (max-width: 375px) {
     body { font-size: 0.9rem; }
-    /* El padding de 'main' (1rem 1.5rem) ya gestiona esto */
+    /* El padding de 'main' (1rem 2rem) ya gestiona esto */
     
     .content-wrapper h1 { font-size: 2rem; }
     .content-wrapper h2 { font-size: 1.6rem; }

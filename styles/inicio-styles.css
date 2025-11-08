@@ -34,7 +34,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem; /* Añadido padding para móviles */
+    padding: 1rem 2rem; /* Añadido padding para móviles (CORREGIDO) */
 }
 
 /* --- Estilos para la Página de Inicio (index.html) --- */
