@@ -64,11 +64,19 @@
     opacity: 0;
     animation: pop-in-bouncy 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.3s;
 }
-@media (min-width: 768px) {
-    .uml-diagram-container { 
-        padding: 2.5rem 1.5rem 2rem; 
-        width: 95%; 
+/* Media queries específicas de UML */
+@media (max-width: 767px) {
+    /* ... (reglas existentes) ... */
+    
+    .uml-header-content { 
+        padding: 0 1rem; /* Añade padding lateral */
     }
+    .uml-documentation { 
+        padding: 0 1rem; /* Añade padding lateral */
+        margin-bottom: 2rem; 
+    }
+    
+    /* ... (reglas existentes) ... */
 }
 
 /* Título "Esquema Gráfico" dentro del contenedor */
