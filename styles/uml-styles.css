@@ -1,0 +1,145 @@
+/* --- ESTILOS ESPECÍFICOS PARA LA PÁGINA UML (document-uml.html) --- */
+
+/* Cursores de Zoom */
+.plantuml-diagram-image {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23A8C7FA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zoom-in"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>') 12 12, zoom-in !important;
+}
+.modal-content {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23A8C7FA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zoom-in"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>') 12 12, zoom-in !important;
+}
+.modal-content.zoomed-further,
+.modal-content.zoomed-even-further {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23A8C7FA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zoom-out"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>') 12 12, zoom-out !important;
+}
+
+/* Layout UML */
+.uml-page-wrapper {
+    max-width: 100%; 
+    width: 100%;
+    /* El padding de 'main' ya lo maneja */
+    padding: 0;
+    margin: 0; 
+}
+.uml-header-content { max-width: 800px; margin: 0 auto 2rem auto; padding: 0; width: 100%; }
+.uml-header-content .back-button { margin-top: 1.5rem; }
+.uml-header-content h1 { text-align: center; font-size: clamp(2.2rem, 7vw, 3rem); width: 100%; margin-top: 1rem; margin-bottom: 1.5rem; }
+.uml-documentation { max-width: 800px; margin: 0 auto 3rem auto; padding: 0; width: 100%; color: #B0B0B0; }
+
+.uml-documentation h3, .uml-documentation h4, .uml-documentation h5 {
+    background: linear-gradient(135deg, #A8C7FA, #C6A7FC, #A8C7FA);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding-bottom: 0.6rem;
+    margin-top: 3.5rem;
+    margin-bottom: 1.8rem;
+    font-weight: 700;
+    opacity: 0;
+    animation: pop-in-bouncy 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, gradient-flow 8s linear infinite;
+    word-break: break-word;
+}
+.uml-documentation h3 { font-size: clamp(1.8rem, 6vw, 2.2rem); animation-delay: 0.4s; }
+.uml-documentation h4 { font-size: 1.6rem; border-left: 3px solid #C6A7FC; padding-left: 0.8rem; background: none; -webkit-background-clip: unset; -webkit-text-fill-color: unset; color: #A8C7FA; margin-top: 2.5rem; border-bottom: none; padding-bottom: 0; animation-delay: 0.5s; }
+.uml-documentation h5 { font-size: 1.3rem; background: none; -webkit-background-clip: unset; -webkit-text-fill-color: unset; color: #C6A7FC; margin-top: 2rem; border-bottom: none; padding-bottom: 0; animation-delay: 0.6s; }
+.uml-documentation ul { list-style: disc; margin-left: 25px; margin-bottom: 1.5rem; }
+.uml-documentation li { margin-bottom: 0.5rem; }
+.uml-documentation strong { font-weight: 600; background: linear-gradient(135deg, #A8C7FA, #C6A7FC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.uml-documentation code, .uml-documentation em { color: #8be9fd; font-style: normal; font-family: 'Courier New', Courier, monospace; background-color: rgba(58, 58, 58, 0.7); padding: 0.2em 0.5em; border-radius: 4px; font-size: 0.9em; }
+
+
+/* Contenedor UML (Layout) */
+.uml-diagram-container {
+    border-radius: 16px;
+    padding: 1.5rem; 
+    overflow-x: auto; 
+    position: relative;
+    max-width: 900px;
+    width: 100%; 
+    margin: 3rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: pop-in-bouncy 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.3s;
+}
+@media (min-width: 768px) {
+    .uml-diagram-container { 
+        padding: 2.5rem 1.5rem 2rem; 
+        width: 95%; 
+    }
+}
+
+/* Título "Esquema Gráfico" dentro del contenedor */
+.uml-diagram-title.styled-title {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem; 
+    background: linear-gradient(135deg, #A8C7FA, #C6A7FC);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding-bottom: 0.6rem;
+    margin: 0;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 5vw, 2rem); 
+    line-height: 1;
+}
+@media (min-width: 768px) {
+    .uml-diagram-title.styled-title { left: 2rem; }
+}
+
+/* Imagen del diagrama */
+.plantuml-diagram-image {
+    display: block;
+    margin: 5rem auto 0 auto; 
+    width: auto;
+    max-width: 100%; 
+    max-height: 85vh; 
+    height: auto;
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    object-fit: contain;
+    transition: transform 0.2s ease-in-out;
+}
+@media (min-width: 768px) {
+     .plantuml-diagram-image { margin-top: 4rem auto 0 auto; }
+}
+
+/* --- Estilos Modal de Zoom --- */
+.image-zoom-modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.9); justify-content: center; align-items: center; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); }
+.modal-content { margin: auto; display: block; width: auto; max-width: 95%; max-height: 95vh; object-fit: contain; animation-name: zoom; animation-duration: 0.4s; transition: max-width 0.3s ease, max-height 0.3s ease; }
+#caption { display: none; }
+.close-button { position: absolute; top: 20px; right: 35px; color: #f1f1f1; font-size: 45px; font-weight: bold; transition: 0.3s; cursor: pointer !important; z-index: 1001; line-height: 0.6; }
+.close-button:hover, .close-button:focus { color: #bbb; text-decoration: none; }
+@keyframes zoom { from {transform: scale(0.5)} to {transform: scale(1)} }
+
+/* Niveles de Zoom */
+.modal-content.zoomed-further {
+    max-width: 150vw; 
+    max-height: 150vh;
+}
+.modal-content.zoomed-even-further {
+    max-width: 200vw; 
+    max-height: 200vh;
+}
+
+/* Media queries específicas de UML */
+@media (max-width: 767px) {
+    .uml-documentation h3 { font-size: 1.5rem; }
+    .uml-documentation h4 { font-size: 1.3rem; }
+    .uml-documentation h5 { font-size: 1.2rem; }
+    .uml-header-content { padding: 0; }
+    .uml-documentation { padding: 0; margin-bottom: 2rem; }
+    .uml-diagram-container {
+        width: 100%; 
+        padding: 1.5rem 0.5rem;
+        margin: 1.5rem auto;
+    }
+    .plantuml-diagram-image { max-height: 50vh; }
+    .modal-content { max-width: 98%; max-height: 98vh; }
+    .close-button { top: 10px; right: 20px; font-size: 30px; }
+}

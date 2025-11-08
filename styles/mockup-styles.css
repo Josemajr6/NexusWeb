@@ -1,0 +1,94 @@
+/* --- ESTILOS PARA EL MOCKUP (FIGMA) --- */
+
+/* Contenedor Figma (Layout) */
+.figma-embed-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    margin: 2rem auto 4rem auto; 
+    opacity: 0;
+    animation: pop-in-bouncy 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.5s;
+}
+
+.figma-embed-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    max-width: 100%; 
+    border-radius: 12px; 
+}
+
+/* Lista de Interacciones (Layout) */
+.interactive-features {
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin: -1rem auto 2rem auto; 
+    opacity: 0;
+    animation: pop-in-bouncy 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.4s; 
+}
+
+.interactive-features h3 {
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.5rem;
+    font-size: 1.3rem;
+    color: #E0E0E0;
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    border-bottom: 1px solid #555;
+    text-align: left;
+    /* Quitamos animación y gradiente para que sea un h3 simple */
+    opacity: 1;
+    animation: none;
+    border-bottom: 1px solid #555;
+    margin-top: 0;
+}
+
+.features-list {
+    list-style: none; 
+    padding-left: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 0.8rem 1.5rem; 
+}
+
+@media (min-width: 768px) {
+    .features-list {
+         grid-template-columns: 1fr 1fr;
+    }
+    .features-list li:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+    }
+}
+
+.features-list li {
+    list-style-type: none; 
+    position: relative;
+    padding-left: 2rem; 
+    margin-bottom: 0; 
+    color: #B0B0B0;
+    font-size: 1rem;
+    line-height: 1.5; 
+}
+
+.features-list li::before {
+    content: '✓'; 
+    position: absolute;
+    left: 0;
+    top: 0px; 
+    color: #A8C7FA; 
+    font-weight: bold;
+    font-size: 1.2rem; 
+}
+
+.features-list li strong {
+    color: #E0E0E0;
+    font-weight: 600;
+}
