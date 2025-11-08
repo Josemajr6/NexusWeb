@@ -17,7 +17,7 @@
     max-width: 100%; 
     width: 100%;
     /* El padding de 'main' ya lo maneja */
-    padding: 0;
+
     margin: 0; 
 }
 .uml-header-content { max-width: 800px; margin: 0 auto 2rem auto; padding: 0; width: 100%; }
@@ -64,20 +64,6 @@
     opacity: 0;
     animation: pop-in-bouncy 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.3s;
 }
-/* Media queries específicas de UML */
-@media (max-width: 767px) {
-    /* ... (reglas existentes) ... */
-    
-    .uml-header-content { 
-        padding: 0 1rem; /* Añade padding lateral */
-    }
-    .uml-documentation { 
-        padding: 0 1rem; /* Añade padding lateral */
-        margin-bottom: 2rem; 
-    }
-    
-    /* ... (reglas existentes) ... */
-}
 
 /* Título "Esquema Gráfico" dentro del contenedor */
 .uml-diagram-title.styled-title {
@@ -94,7 +80,7 @@
     font-size: clamp(1.5rem, 5vw, 2rem); 
     line-height: 1;
 }
-@media (min-width: 768px) {
+@media (min-width: 168px) {
     .uml-diagram-title.styled-title { left: 2rem; }
 }
 
@@ -135,13 +121,23 @@
     max-height: 200vh;
 }
 
-/* Media queries específicas de UML */
+/* --- Media query UNIFICADA para móviles --- */
 @media (max-width: 767px) {
+    
+    /* Reglas de padding corregidas */
+    .uml-header-content { 
+        padding: 0 1rem; /* Añade padding lateral */
+    }
+    .uml-documentation { 
+        padding: 0 1rem; /* Añade padding lateral */
+        margin-bottom: 2rem; 
+    }
+
+    /* Resto de reglas para móvil */
     .uml-documentation h3 { font-size: 1.5rem; }
     .uml-documentation h4 { font-size: 1.3rem; }
     .uml-documentation h5 { font-size: 1.2rem; }
-    .uml-header-content { padding: 0; }
-    .uml-documentation { padding: 0; margin-bottom: 2rem; }
+    
     .uml-diagram-container {
         width: 100%; 
         padding: 1.5rem 0.5rem;
@@ -150,4 +146,6 @@
     .plantuml-diagram-image { max-height: 50vh; }
     .modal-content { max-width: 98%; max-height: 98vh; }
     .close-button { top: 10px; right: 20px; font-size: 30px; }
+    .uml-header-content { padding: 0; }
+    .uml-documentation { padding: 0; margin-bottom: 2rem; }
 }
