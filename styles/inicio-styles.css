@@ -195,19 +195,84 @@ main {
     font-size: 0.9rem;
     font-weight: 500;
 }
-
 /* --- Estilos para el Pie de Página (Footer) --- */
 footer {
-    width: 100%;
-    padding: 15px 1rem; /* Añadido padding lateral */
-    background-color: #111;
+    width: calc(100% - 2rem); 
+    margin: 0 auto 1rem auto;
+    padding: 2px; /* Grosor del borde */
     text-align: center;
     font-size: 0.9rem;
-    color: #888;
-    border-top: 1px solid #333;
+    color: #B0B0B0;
     flex-shrink: 0;
+    
+    position: relative; 
+    border-radius: 12px;
+    z-index: 2;
+    border: none;
+    overflow: hidden;
+    
+    /* El FOOTER es el gradiente animado */
+    background: linear-gradient(
+        5deg,
+        rgba(58, 58, 59, 0.8),
+        rgba(31, 30, 30, 0.8),
+        rgba(17, 18, 18, 0.8)
+    );
+    
+    /* Aumentamos el tamaño para que la animación se vea bien */
+    background-size: 200% 200%;
+    
+    /* !! ESTE ES EL CAMBIO CLAVE !! 
+      Cambiamos 'rotate-gradient' por 'animated-gradient'
+    */
+    animation: animated-gradient 6s linear infinite; 
+    
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: width 0.3s ease, margin 0.3s ease;
 }
 
+/* Pseudo-elemento para el fondo (EL "RELLENO" O MÁSCARA INTERIOR) 
+  Esto se pone ENCIMA del gradiente del footer.
+*/
+footer::before {
+    content: '';
+    position: absolute;
+    z-index: 0; /* Detrás del texto (p) */
+    
+    /* Se posiciona para dejar el padding de 2px del footer visible */
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    
+    /* Este es el fondo glassmorphism */
+    background-color: rgba(30, 30, 30, 0.85); /* Un poco más opaco */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    
+    /* El borde interior debe ser más pequeño que el exterior */
+    border-radius: 10px; 
+}
+
+
+footer p {
+    margin: 0;
+    /* Añadimos el padding aquí para el texto, no en el footer */
+    padding: 13px 1rem; 
+    
+    /* Asegura que el texto esté por encima de todo */
+    position: relative; 
+    z-index: 1; 
+}
+
+/* Media query (sin cambios) */
+@media (min-width: 768px) {
+    footer {
+        width: 95%; 
+        max-width: 1200px;
+        margin: 0 auto 1.5rem auto;
+    }
+}
 /* --- Keyframes para animaciones --- */
 @keyframes shimmer {
     from { left: -100%; }
@@ -230,4 +295,12 @@ footer {
     0% { box-shadow: 0 4px 15px rgba(168, 199, 250, 0.3); }
     50% { box-shadow: 0 4px 25px rgba(198, 167, 252, 0.5); }
     100% { box-shadow: 0 4px 15px rgba(168, 199, 250, 0.3); }
+}
+
+/* ... (al final del todo) ... */
+
+/* BÓRRALO ENTERO */
+@keyframes rotate-gradient {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

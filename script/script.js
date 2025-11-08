@@ -27,4 +27,3 @@ gsap.to(slogan, {
     yoyo: true,
     ease: "sine.inOut",
 });
-

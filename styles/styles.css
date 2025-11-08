@@ -274,44 +274,126 @@ th { color: #A8C7FA; font-size: 1.1rem; }
     box-shadow: 0 0 10px rgba(168, 199, 250, 0.3); 
 }
 .contact-form textarea { resize: vertical; }
-
-/* Botón "Enviar Mensaje" */
-.send-message-button { 
-    margin-top: 1.5rem; 
-    padding: 12px 24px; 
-    background: linear-gradient(135deg, #A8C7FA, #C6A7FC);
-    color: #1F1F1F;
-    border: none;
-    border-radius: 50px; 
-    text-decoration: none; 
-    font-weight: 700; 
+.send-message-button {
+    margin-top: 1.5rem;
+    padding: 14px 32px;
+    
+    /* Fondo "Glass" oscuro */
+    background-color: rgba(42, 42, 42, 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    
+    /* Borde inicial oscuro y sutil */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    /* Texto inicial tenue */
+    color: #B0B0B0;
+    
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600; /* Un peso más "fino" */
     font-size: 1rem;
-    cursor: pointer; 
-    align-self: center; 
+    cursor: pointer;
+    align-self: center;
     position: relative;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 15px rgba(168, 199, 250, 0.3);
-    animation: pulse-glow 2.5s infinite ease-in-out;
-}
-.send-message-button span { z-index: 1; position: relative; } 
-.send-message-button:hover { 
-    transform: translateY(-3px) scale(1.02); 
-    box-shadow: 0 6px 20px rgba(168, 199, 250, 0.5); 
-    animation-play-state: paused;
+    
+    /* ¡Quitamos la animación de brillo! */
+    /* animation: pulse-glow ... (eliminada) */
+    
+    /* Sombra de "profundidad" glass, no de 3D */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    
+    /* Transiciones suaves para el nuevo efecto */
+    transition: color 0.4s ease, 
+                border-color 0.4s ease, 
+                box-shadow 0.4s ease, 
+                transform 0.3s ease;
 }
 
+.send-message-button span {
+    z-index: 1;
+    position: relative;
+    display: inline-block;
+    /* Transición para el color del texto */
+    transition: color 0.4s ease;
+}
+
+/* Efecto al pasar el ratón (Hover) */
+.send-message-button:hover {
+    /* El borde se ilumina con el color de la marca */
+    border-color: rgba(168, 199, 250, 0.7);
+    
+    /* El texto se ilumina */
+    color: #E0E0E0;
+    
+    /* La sombra se vuelve del color de la marca */
+    box-shadow: 0 4px 20px rgba(168, 199, 250, 0.25);
+    
+    /* Ligero "lift" */
+    transform: translateY(-2px);
+}
+
+/* Efecto al hacer clic (Active) */
+.send-message-button:active {
+    /* Se "hunde" ligeramente */
+    transform: translateY(1px);
+    /* La sombra desaparece para el efecto "press" */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+    /* Fondo un poco más oscuro al presionar */
+    background-color: rgba(30, 30, 30, 0.7);
+}
 
 /* Footer (Estilos base) */
+/* Footer (Estilos base con borde animado) */
 .advanced-footer { 
-    width: 100%;
+    width: 95%;
+    max-width: 1000px;
     margin: 2rem auto 1rem auto; 
-    border-radius: 12px; 
-    color: #E0E0E0; 
-    padding: 2.5rem 1rem 1rem; 
     flex-shrink: 0; 
     text-align: center; 
+    color: #E0E0E0; 
+
+    /* --- Estilo de Borde Animado (Copiado de index.html) --- */
+    position: relative;
+    z-index: 2;
+    border: none;
+    border-radius: 12px; 
+    overflow: hidden;
+    
+    /* El grosor del borde */
+    padding: 2px; 
+    
+    /* El gradiente animado (el tuyo) */
+    background: linear-gradient(
+        5deg,
+        rgba(58, 58, 59, 0.8),
+        rgba(31, 30, 30, 0.8),
+        rgba(17, 18, 18, 0.8)
+    );
+    background-size: 200% 200%;
+    animation: animated-gradient 6s linear infinite;
+    
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
+/* Relleno interior "Glass" para el footer avanzado */
+.advanced-footer::before {
+    content: '';
+    position: absolute;
+    z-index: 0; /* Detrás del contenido */
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    
+    /* Fondo Glass (basado en el original de glassmorphism.css) */
+    background-color: rgba(17, 17, 17, 0.85); /* Un poco más opaco */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    border-radius: 10px; /* Borde interior */
+}
+
 @media (min-width: 768px) {
     .advanced-footer { 
         padding: 2.5rem 2rem 1rem; 
@@ -349,7 +431,54 @@ th { color: #A8C7FA; font-size: 1.1rem; }
 @keyframes gradient-flow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 @keyframes animated-gradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 @keyframes pulse-glow { 0% { box-shadow: 0 4px 15px rgba(168, 199, 250, 0.3); } 50% { box-shadow: 0 4px 25px rgba(198, 167, 252, 0.5); } 100% { box-shadow: 0 4px 15px rgba(168, 199, 250, 0.3); } }
+/* Modifica esta regla existente */
+.footer-grid-container { 
+    display: grid; 
+    grid-template-columns: 1fr; 
+    gap: 2rem; 
+    max-width: 1000px; 
+    margin: 0 auto; /* Quitamos el margin-bottom */
+    text-align: center; 
+    
+    /* --- NUEVO --- */
+    position: relative;
+    z-index: 1; /* Encima del ::before */
+    padding: 2.5rem 1rem 0; /* Padding original (sin bottom) */
+}
 
+/* Modifica esta regla existente */
+.footer-bottom { 
+    border-top: 1px solid rgba(255, 255, 255, 0.1); 
+    padding-top: 1rem; 
+    margin-top: 2rem; 
+    font-size: 0.8rem; 
+    color: #666; 
+    
+    /* --- NUEVO --- */
+    position: relative;
+    z-index: 1; /* Encima del ::before */
+    padding-bottom: 1rem; /* Padding original (solo bottom) */
+    /* Añadimos padding lateral que perdimos */
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Modifica el @media query para los paddings */
+@media (min-width: 768px) { 
+    .footer-grid-container { 
+        grid-template-columns: 2fr 1fr 1fr; 
+        text-align: left; 
+        padding: 2.5rem 2rem 0; /* Padding ajustado */
+    } 
+    .footer-section h3 { text-align: left; }
+    .footer-section.footer-brand h3 { text-align: left; }
+    .footer-section.footer-brand p { text-align: left; } 
+    .footer-section.footer-social .social-icons { justify-content: flex-start; } 
+    .footer-bottom {
+         padding-left: 2rem; /* Padding ajustado */
+         padding-right: 2rem; /* Padding ajustado */
+    }
+}
 /* --- Media Queries (Sección Responsive) --- */
 @media (max-width: 767px) {
     body { font-size: 0.95rem; }
@@ -407,4 +536,128 @@ th { color: #A8C7FA; font-size: 1.1rem; }
     .menu-subtitle { font-size: 0.9rem; }
     .menu-button h2 { font-size: 1.2rem; }
     .menu-button p { font-size: 0.8rem; }
+}
+
+/* --- Estilos para Elementos Destacados (moreinfo.html) --- */
+
+/* Contenedor del elemento de menú con etiqueta */
+.menu-item-with-tag {
+    position: relative;
+    display: flex; /* Para alinear el enlace y la etiqueta */
+    align-items: center; /* Centrado vertical */
+    justify-content: space-between; /* Espacio entre el enlace y la etiqueta */
+    width: 100%; /* Ocupa el ancho completo */
+    padding-right: 15px; /* Para que la etiqueta no quede pegada al borde */
+}
+
+/* Estilo de la estrellita dentro del enlace */
+.highlight-star {
+    color: #FFD700; /* Dorado brillante */
+    margin-right: 8px;
+    font-size: 0.9em;
+    transform: scale(0.9); /* Un poco más pequeña */
+    transition: transform 0.2s ease;
+}
+
+/* Efecto al pasar el ratón sobre el enlace */
+.menu-item-with-tag a:hover .highlight-star {
+    transform: scale(1.1) rotate(10deg); /* Se agranda y rota ligeramente */
+}
+
+/* Etiqueta "Destacado" */
+.highlight-tag {
+    background: linear-gradient(90deg, #A8C7FA, #C6A7FC); /* Gradiente de la marca */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    font-size: 0.75rem; /* Más pequeño */
+    font-weight: 700;
+    padding: 3px 8px;
+    border: 1px solid; /* Borde con el color del gradiente */
+    border-image: linear-gradient(90deg, #A8C7FA, #C6A7FC) 1; /* El borde también es un gradiente */
+    border-radius: 20px;
+    display: flex; /* Para alinear texto y estrellita */
+    align-items: center;
+    gap: 4px; /* Espacio entre "Destacado" y la estrellita */
+    opacity: 0.8; /* Ligeramente transparente */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Estrellita dentro de la etiqueta "Destacado" */
+.highlight-tag-star {
+    font-size: 0.6em; /* Más pequeña aún */
+    color: #FFD700; /* Dorado */
+}
+
+/* --- Estilos para Botón Destacado (moreinfo.html) --- */
+
+/* Clase para el <a> que contiene la etiqueta */
+.menu-button-highlighted {
+    position: relative; /* Contenedor para la etiqueta */
+    overflow: hidden; /* Asegura que la etiqueta no se salga */
+}
+
+/* Estrella dentro del <h2> (la de la izquierda) */
+.highlight-star {
+    color: #FFD700; /* Dorado */
+    margin-right: 8px;
+    font-size: 0.9em;
+    /* Animación sutil de brillo */
+    animation: sparkle-subtle 1.8s ease-in-out infinite alternate;
+}
+
+/* La Etiqueta "Destacado" (la de la derecha) */
+.highlight-tag {
+    position: absolute; /* La clave para posicionarla */
+    top: 1.25rem;      /* Margen superior */
+    right: 1.5rem;     /* Margen derecho */
+    
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #E0E0E0; /* Texto brillante */
+    
+    /* Fondo "Glass" */
+    background-color: rgba(42, 42, 42, 0.7);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    
+    padding: 4px 10px;   /* Margen interior */
+    border-radius: 50px; /* Bordes redondeados */
+    border: 1px solid rgba(168, 199, 250, 0.5); /* Borde color marca */
+    
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    
+    /* Animación de entrada */
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: pop-in-tag 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.5s;
+}
+
+/* Estrella dentro de la etiqueta */
+.highlight-tag-star-inner {
+    color: #FFD700;
+    font-size: 0.8em;
+}
+
+/* Animaciones */
+@keyframes sparkle-subtle {
+  from { opacity: 0.6; }
+  to { opacity: 1; }
+}
+
+@keyframes pop-in-tag {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
