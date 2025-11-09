@@ -324,3 +324,77 @@ footer p {
     /* Evita que el icono encoja */
     flex-shrink: 0;
 }
+
+
+/* * --- INICIO DE LA CORRECCIÓN PARA MÓVILES --- 
+ * Estas reglas se aplican a pantallas pequeñas para que todo quepa mejor.
+*/
+
+/* Media query para móviles (pantallas de 480px o menos) */
+@media (max-width: 480px) {
+    .slogan-container h1 {
+        /* Reducimos el tamaño mínimo y máximo de la fuente del título */
+        font-size: clamp(3.5rem, 10vw, 4rem);
+    }
+
+    .slogan-container p {
+        /* Reducimos el tamaño de la fuente del subtítulo */
+        font-size: clamp(1.1rem, 4vw, 1.5rem);
+    }
+
+    .buttons-container {
+        /* Reducimos el margen superior de los botones */
+        margin-top: 2.5rem;
+        gap: 1rem; /* Reducimos el espacio entre botones */
+    }
+
+    .info-button, .demo-button {
+        /* Hacemos los botones un poco menos altos */
+        padding: 10px 20px;
+    }
+
+    .platforms {
+        /* Reducimos el margen superior de la sección "Próximamente" */
+        margin-top: 2.5rem;
+    }
+
+    .platforms h3 {
+        margin-bottom: 1rem;
+    }
+
+    .platforms-icons {
+        gap: 1.5rem; /* Reducimos el espacio entre iconos */
+    }
+}
+
+/* Media query para móviles MUY pequeños (ej. iPhone SE, 375px o menos) */
+@media (max-width: 375px) {
+    .slogan-container h1 {
+        font-size: 2.2rem; /* Tamaño fijo más pequeño */
+    }
+    .slogan-container p {
+        font-size: 1rem; /* Tamaño fijo más pequeño */
+    }
+    .buttons-container {
+        margin-top: 2rem;
+    }
+    .platforms {
+        margin-top: 2rem;
+    }
+    .platform-icon .si {
+        font-size: 28px; /* Iconos un poco más pequeños */
+    }
+}
+/* --- FIN DE LA CORRECCIÓN PARA MÓVILES --- */
+
+
+/* --- INICIO DE CORRECCIÓN FOOTER MÓVIL (Overlap) --- */
+/* (Añadido 09/11/2025) */
+@media (max-width: 767px) {
+    body.no-scroll footer {
+        /* Añade un margen inferior para que no lo tape la barra del navegador */
+        /* Usamos 1rem (del margin original) + 4.5rem extra */
+        margin-bottom: 7rem; /* <-- ¡AJUSTADO! */
+    }
+}
+/* --- FIN DE CORRECCIÓN FOOTER MÓVIL --- */
